@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include rawad *.css
+recursive-include rawad *.csv
+recursive-include rawad *.html
+recursive-include rawad *.ico
+recursive-include rawad *.js
+recursive-include rawad *.json
+recursive-include rawad *.md
+recursive-include rawad *.png
+recursive-include rawad *.py
+recursive-include rawad *.svg
+recursive-include rawad *.txt
+recursive-exclude rawad *.pyc
