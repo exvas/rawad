@@ -1,0 +1,20 @@
+{
+	"js/core-script.min.js": [
+		"public/js/custom.js",
+		"public/js/bootstrap.bundle.min.js",
+		"public/js/jquery.min.js",
+		"public/js/meanmenu.min.js",
+		"public/js/owl.carousel.min.js",
+		"public/js/wow.min.js",
+	],
+	"js/core-script.css": [
+		"public/css/animate.min.css",
+		"public/css/bootstrap.min.css",
+		"public/css/meanmenu.min.css",
+		"public/css/owl.carousel.min.css",
+		"public/css/owl.theme.default.min.css",
+		"public/css/remixicons.min.css",
+		"public/css/responsive.min.css",
+		"public/css/style.min.css",
+	]
+}

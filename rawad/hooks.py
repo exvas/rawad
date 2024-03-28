@@ -9,7 +9,6 @@ app_license = "MIT"
 
 # Includes in <head>
 # ------------------
-
 # include js, css files in header of desk.html
 # app_include_css = "/assets/rawad/css/rawad.css"
 # app_include_js = "/assets/rawad/js/rawad.js"
