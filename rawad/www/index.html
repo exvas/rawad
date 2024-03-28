@@ -1,202 +1,54 @@
-<!DOCTYPE html>
-<html class="no-js" lang="zxx">
-<head>
-<!DOCTYPE html>
-
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="generator" content="frappe">
-
-{% block meta_block %}
-{% include "templates/includes/meta_block.html" %}
-{% endblock %}
-
-<title>{% block title %}{{ title | striptags }}{% endblock %}</title>
-
-{% block favicon %}
-<link
-rel="shortcut icon"
-href="{{ (favicon or "/assets/frappe/images/frappe-favicon.svg") | abs_url }}"
-type="image/x-icon"
->
-{% endblock %}
-
-<link rel="canonical" href="{{ canonical }}">
-
-{%- block head -%}
-{% include "templates/includes/head.html" %}
-{%- endblock -%}
-
-{%- block head_include %}
-{{ head_include or "" }}
-{% endblock -%}
-
-<script>
-window.frappe = {};
-frappe.ready_events = [];
-frappe.ready = function(fn) {
-frappe.ready_events.push(fn);
-}
-window.dev_server = {{ dev_server }};
-window.socketio_port = {{ (frappe.socketio_port or 'null') }};
-window.show_language_picker = {{ show_language_picker or 'false' }};
-</script>
-</head>
-<body frappe-session-status="{{ 'logged-in' if frappe.session.user != 'Guest' else 'logged-out'}}" data-path="{{ path | e }}" {%- if template and template.endswith('.md') %} frappe-content-type="markdown" {%- endif %} class="{{ body_class or ''}}">
-    <div class="preloader">
-        <div class="preloader__image"></div>
-    </div>
-{% include "public/icons/timeless/icons.svg" %}
-
-{%- block banner -%}
-{% include "templates/includes/banner_extension.html" ignore missing %}
-
-{% if banner_html -%}
-{{ banner_html or "" }}
-{%- endif %}
-{%- endblock -%}
-{%- block navbar -%}
-{{ web_block(
-navbar_template or 'Standard Navbar',
-values=_context_dict,
-add_container=0,
-add_top_padding=0,
-add_bottom_padding=0,
-) }}
-{%- endblock -%}
-
-{% block base_scripts %}
-
-<script>
-frappe.boot = {{ boot }}
-frappe.sys_defaults = frappe.boot.sysdefaults;
-</script>
-{{ include_script('frappe-web.bundle.js') }}
-{% endblock %}
-
-</body>
-</html>
-<meta charset="UTF-8" />
-<head>
-	<!-- Required meta tags -->
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-	<!-- Bootstrap Min CSS --> 
-	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
-	<!-- Owl Theme Default Min CSS --> 
-	<link rel="stylesheet" href="assets/css/owl.theme.default.min.css">
-	<!-- Owl Carousel Min CSS --> 
-	<link rel="stylesheet" href="assets/css/owl.carousel.min.css">
-	<!-- Remixicon CSS --> 
-	<link rel="stylesheet" href="assets/css/remixicon.css">
-	<!-- Meanmenu Min CSS -->
-	<link rel="stylesheet" href="assets/css/meanmenu.min.css">
-	<!-- Animate Min CSS --> 
-	<link rel="stylesheet" href="assets/css/animate.min.css">
-	<!-- Style CSS -->
-	<link rel="stylesheet" href="assets/css/style.css">
-	<!-- Responsive CSS -->
-	<link rel="stylesheet" href="assets/css/responsive.css">
-	
-	<!-- Favicon -->
-	<link rel="icon" type="image/png" href="assets/images/favicon.png">
-	<!-- Title -->
-	<title>Rawad Al  Sashat - Tools Store</title>
-</head>
-
-<body>
-	<!-- Start Preloader Area -->
-	<div class="preloader">
-		<div class="content">
-			<div class="box"></div>
-		</div>
-	</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <!doctype html>
+<!doctype html>
 <html lang="zxx">
-    
-<head> -->
-	<!-- Required meta tags -->
-		<!-- <meta charset="utf-8"> -->
-		<!-- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
 
-	<!-- Bootstrap Min CSS --> 
-		<!-- <link rel="stylesheet" href="assets/css/bootstrap.min.css"> -->
-	<!-- Owl Theme Default Min CSS --> 
-		<!-- <link rel="stylesheet" href="assets/css/owl.theme.default.min.css"> -->
-	<!-- Owl Carousel Min CSS --> 
-		<!-- <link rel="stylesheet" href="assets/css/owl.carousel.min.css"> -->
-	<!-- Remixicon CSS --> 
-		<!-- <link rel="stylesheet" href="assets/css/remixicon.css"> -->
-	<!-- Meanmenu Min CSS -->
-		<!-- <link rel="stylesheet" href="assets/css/meanmenu.min.css"> -->
-	<!-- Animate Min CSS --> 
-		<!-- <link rel="stylesheet" href="assets/css/animate.min.css"> -->
-	<!-- Style CSS -->
-		<!-- <link rel="stylesheet" href="assets/css/style.css"> -->
-	<!-- Responsive CSS -->
-		<!-- <link rel="stylesheet" href="assets/css/responsive.css"> -->
-		
-	<!-- Favicon -->
-		<!-- <link rel="icon" type="image/png" href="assets/images/favicon.png"> -->
-	<!-- Title -->
-		<!-- <title>Rawad Al  Sashat - Tools Store</title> -->
-    <!-- </head> -->
+<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- <body> -->
-	<!-- Start Preloader Area -->
-		<!-- <div class="preloader"> -->
-            <!-- <div class="content"> -->
-                <!-- <div class="box"></div> -->
-            <!-- </div> -->
-        <!-- </div> -->
+		<!-- Bootstrap Min CSS -->
+		<link rel="stylesheet" href="assets/rawad/css/bootstrap.min.css">
+		<!-- Owl Theme Default Min CSS -->
+		<link rel="stylesheet" href="assets/rawad/css/owl.theme.default.min.css">
+		<!-- Owl Carousel Min CSS -->
+		<link rel="stylesheet" href="assets/rawad/css/owl.carousel.min.css">
+		<!-- Remixicon CSS -->
+		<link rel="stylesheet" href="assets/rawad/css/remixicon.css">
+		<!-- Meanmenu Min CSS -->
+		<link rel="stylesheet" href="assets/rawad/css/meanmenu.min.css">
+		<!-- Animate Min CSS -->
+		<link rel="stylesheet" href="assets/rawad/css/animate.min.css">
+		<!-- Style CSS -->
+		<link rel="stylesheet" href="assets/rawad/css/style.css">
+		<!-- Responsive CSS -->
+		<link rel="stylesheet" href="assets/rawad/css/responsive.css">
+
+		<!-- Favicon -->
+		<link rel="icon" type="image/png" href="assets/rawad/images/favicon.png">
+		<!-- Title -->
+		<title>Rawad Al  Sashat - Tools Store</title>
+    </head>
+
+    <body>
+		<!-- Start Preloader Area -->
+		<div class="preloader">
+            <div class="content">
+                <div class="box"></div>
+            </div>
+        </div>
 		<!-- End Preloader Area -->
-		
+
 		<!-- Start Header Area -->
 		<header class="header-area">
 
 			<!-- Start Middle Header -->
-			<!-- <div class="middle-header middle-header-style-two">
+			<div class="middle-header middle-header-style-two">
 				<div class="container">
 					<div class="row align-items-center">
 						<div class="col-lg-3">
 							<div class="logo">
 								<a href="index.html">
-									<img src="assets/images/brandhop-logo.png" alt="Image">
+									<img src="assets/rawad/images/brandhop-logo.png" alt="Image">
 								</a>
 							</div>
 						</div>
@@ -238,12 +90,12 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 						</div>
 					</div>
 				</div>
-			</div> -->
+			</div>
 			<!-- Start Middle Header -->
-			
+
 			<!-- Start Navbar Area -->
 			<div class="navbar-area navbar-area-style-two">
-                <!-- <div class="mobile-responsive-nav">
+                <div class="mobile-responsive-nav">
                     <div class="container">
                         <div class="mobile-responsive-menu">
 							<div class="navbar-category">
@@ -291,21 +143,21 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 							</div>
                             <div class="logo">
                                 <a href="index.html">
-									<img src="assets/images/brandhop-logo.png" alt="logo">
+									<img src="assets/rawad/images/brandhop-logo.png" alt="logo">
 								</a>
                             </div>
                         </div>
                     </div>
-                </div> -->
+                </div>
 
-                <div class="desktop-nav" >
-                    <div class="container" >
-                        <nav class="navbar navbar-expand-md navbar-ligh" >
+                <div class="desktop-nav">
+                    <div class="container">
+                        <nav class="navbar navbar-expand-md navbar-light">
 
-                            <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent" >
+                            <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
 
-                                <div class="others-options ptb-25" >
-									<span>Free shipping on all orders over ₹100</span>
+                                <div class="others-options ptb-25">
+									<span>Shipping on all orders over Saudi Arabia</span>
                                 </div>
                             </div>
                         </nav>
@@ -315,7 +167,7 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 			<!-- End Navbar Area -->
 		</header>
 		<!-- End Header Area -->
-		
+
 		<!-- Start Cart Shit Area -->
 		<div class="modal fade cart-shit" id="exampleModal-cart" tabindex="-1" aria-hidden="true">
 			<div class="cart-shit-wrap">
@@ -326,55 +178,55 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 								<i class="ri-close-fill"></i>
 							</button>
 						</div>
-	
+
 						<div class="modal-body">
 							<ul class="cart-list">
 								<li>
-									<img src="assets/images/products/product-1.jpg" alt="Image">
+									<img src="assets/rawad/images/products/product-1.jpg" alt="Image">
 									<a href="#">
 										DFMALB 20V Max XX Oscillating Multi Tool Variable Speed Tool
 									</a>
-						
+
 									<i class="ri-close-fill"></i>
 								</li>
-	
+
 								<li>
-									<img src="assets/images/products/product-2.jpg" alt="Image">
+									<img src="assets/rawad/images/products/product-2.jpg" alt="Image">
 									<a href="#">
 										Power Tools Set Chinese Manufacturer Production 50V Lithu Battery
 									</a>
-								
+
 									<i class="ri-close-fill"></i>
 								</li>
-	
+
 								<li>
-									<img src="assets/images/products/product-3.jpg" alt="Image">
+									<img src="assets/rawad/images/products/product-3.jpg" alt="Image">
 									<a href="#">
-										Electrical Magnetic Impact Power Hammer Drills Machine 
+										Electrical Magnetic Impact Power Hammer Drills Machine
 									</a>
-								
+
 									<i class="ri-close-fill"></i>
 								</li>
-	
+
 								<li>
-									<img src="assets/images/products/product-4.jpg" alt="Image">
+									<img src=assets/rawad/images/products/product-4.jpg" alt="Image">
 									<a href="#">
 										Professional Cordless Drill Power Tools Set Competitive Price
 									</a>
-									
+
 									<i class="ri-close-fill"></i>
 								</li>
 							</ul>
-	
+
 							<ul class="payable">
 								<li>
 									Payable total
 								</li>
 								<li class="total">
-									
+
 								</li>
 							</ul>
-	
+
 							<ul class="cart-check-btn">
 								<li>
 									<a href="#" class="default-btn">
@@ -406,8 +258,8 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 										<div class="hero-slider-content">
 											<span>Special Offer</span>
 											<h1>High Quality Products Are Ready Here</h1>
-										
-											
+
+
 											<div class="hero-slider-btn">
 												<a href="#" class="default-btn">
 													<i class="ri-shopping-cart-line"></i>
@@ -418,15 +270,15 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 									</div>
 								</div>
 							</div>
-			
+
 							<div class="slider-item bg-8">
 								<div class="d-table">
 									<div class="d-table-cell">
 										<div class="hero-slider-content">
 											<span>Special Offer</span>
 											<h1>Best Collection For Home Decoration 2021</h1>
-							
-											
+
+
 											<div class="banner-btn">
 												<a href="#" class="default-btn">
 													<i class="ri-shopping-cart-line"></i>
@@ -437,15 +289,15 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 									</div>
 								</div>
 							</div>
-			
+
 							<div class="slider-item bg-9">
 								<div class="d-table">
 									<div class="d-table-cell">
 										<div class="hero-slider-content">
 											<span>Special Offer</span>
 											<h1>All Types Of Premium Quality Tools</h1>
-								
-											
+
+
 											<div class="banner-btn">
 												<a href="#" class="default-btn">
 													<i class="ri-shopping-cart-line"></i>
@@ -487,116 +339,116 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 						<div class="section-title">
 							<h2>Popular Categories</h2>
 						</div>
-		
+
 						<div class="row justify-content-center product-catagories-slider owl-carousel owl-theme">
 							<div class="col-lg-12 col-sm-6">
 								<div class="single-categories ">
 									<a href="#">
-										<img src="assets/images/products/ELECTRIC-POWER-TOOLS.png" alt="Image">
+										<img src="assets/rawad/images/products/ELECTRIC-POWER-TOOLS.png" alt="Image">
 									</a>
-		
+
 									<h3>
 										<a href="#">
 											ELECTRIC POWER TOOLS
 										</a>
 									</h3>
 									<span>15 Products</span>
-		
+
 									<a href="#" class="read-more">
 										Shop Now
 									</a>
 								</div>
 							</div>
-		
+
 							<div class="col-lg-12 col-sm-6">
 								<div class="single-categories bg-eff5ff">
 									<a href="#">
-										<img src="assets/images/products/CONSTRUCTION-EQUIPMENT.png" alt="Image">
+										<img src="assets/rawad/images/products/CONSTRUCTION-EQUIPMENT.png" alt="Image">
 									</a>
-		
+
 									<h3>
 										<a href="#">
 											CONSTRUCTION EQUIPMENT
 										</a>
 									</h3>
 									<span>05 Products</span>
-		
+
 									<a href="#" class="read-more">
 										Shop Now
 									</a>
 								</div>
 							</div>
-		
+
 							<div class="col-lg-12 col-sm-6">
 								<div class="single-categories bg-ebf1f5">
 									<a href="#">
-										<img src="assets/images/products/PLUMBING.png" alt="Image">
+										<img src="assets/rawad/images/products/PLUMBING.png" alt="Image">
 									</a>
-		
+
 									<h3>
 										<a href="#">
 											PLUMBING TOOLS & EQUIPMENT
 										</a>
 									</h3>
 									<span>18 Products</span>
-		
+
 									<a href="#" class="read-more">
 										Shop Now
 									</a>
 								</div>
 							</div>
-		
+
 							<div class="col-lg-12 col-sm-6">
 								<div class="single-categories bg-ebf9ea">
 									<a href="#">
-										<img src="assets/images/products/STORAGE-HANDLING.png" alt="Image">
+										<img src="assets/rawad/images/products/STORAGE-HANDLING.png" alt="Image">
 									</a>
-		
+
 									<h3>
 										<a href="#">
 											STORAGE AND HANDLING
 										</a>
 									</h3>
 									<span>19 Products</span>
-		
+
 									<a href="#" class="read-more">
 										Shop Now
 									</a>
 								</div>
 							</div>
-		
+
 							<div class="col-lg-12 col-sm-6">
 								<div class="single-categories bg-fff8e5">
 									<a href="#">
-										<img src="assets/images/products/VACUUM-PUMP.png" alt="Image">
+										<img src="assets/rawad/images/products/VACUUM-PUMP.png" alt="Image">
 									</a>
-		
+
 									<h3>
 										<a href="#">
 											AUTOMOTIVE <br>TOOLS
 										</a>
 									</h3>
 									<span>04 Products</span>
-		
+
 									<a href="#" class="read-more">
 										Shop Now
 									</a>
 								</div>
 							</div>
-		
+
 							<div class="col-lg-12 col-sm-6">
 								<div class="single-categories bg-f3f1ff">
 									<a href="#">
-										<img src="assets/images/products/Air-drill.png" alt="Image">
+										<img src="assets/rawad/images/products/Air-drill.png" alt="Image">
 									</a>
-		
+
 									<h3>
 										<a href="#">
 											AIR <br> TOOLS
 										</a>
 									</h3>
 									<span>12 Products</span>
-		
+
 									<a href="#" class="read-more">
 										Shop Now
 									</a>
@@ -618,7 +470,7 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 					<div class="single-products">
 						<div class="product-img">
 							<a href="#">
-								<img src="assets/images/products/product-1.jpg" alt="Image">
+								<img src="assets/rawad/images/products/product-1.jpg" alt="Image">
 							</a>
 
 							<span class="hot new">-30%</span>
@@ -632,10 +484,7 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 
 
 							<ul class="products-price">
-								
-								<li>
-									<span>In Stock</span>
-								</li>
+
 							</ul>
 
 							<ul class="products-cart-wish-view">
@@ -645,8 +494,8 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 										Add To Cart
 									</a>
 								</li>
-								
-								
+
+
 							</ul>
 						</div>
 					</div>
@@ -654,7 +503,7 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 					<div class="single-products">
 						<div class="product-img">
 							<a href="#">
-								<img src="assets/images/products/product-2.jpg" alt="Image">
+								<img src="assets/rawad/images/products/product-2.jpg" alt="Image">
 							</a>
 
 							<span class="hot new">-20%</span>
@@ -668,8 +517,8 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 
 
 							<ul class="products-price">
-								
 								<li>
+
 									<span>In Stock</span>
 								</li>
 							</ul>
@@ -681,8 +530,8 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 										Add To Cart
 									</a>
 								</li>
-								
-								
+
+
 							</ul>
 						</div>
 					</div>
@@ -690,7 +539,7 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 					<div class="single-products">
 						<div class="product-img">
 							<a href="#">
-								<img src="assets/images/products/product-3.jpg" alt="Image">
+								<img src="assets/rawad/images/products/product-3.jpg" alt="Image">
 							</a>
 
 							<span class="hot new">-30%</span>
@@ -704,8 +553,8 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 
 
 							<ul class="products-price">
-								
 								<li>
+
 									<span>In Stock</span>
 								</li>
 							</ul>
@@ -717,8 +566,8 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 										Add To Cart
 									</a>
 								</li>
-								
-								
+
+
 							</ul>
 						</div>
 					</div>
@@ -726,7 +575,7 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 					<div class="single-products">
 						<div class="product-img">
 							<a href="#">
-								<img src="assets/images/products/product-4.jpg" alt="Image">
+								<img src="assets/rawad/images/products/product-4.jpg" alt="Image">
 							</a>
 
 							<span class="hot new">-10%</span>
@@ -734,13 +583,13 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 
 						<div class="product-content">
 							<a href="#" class="title">
-								Power Tools Set Chinese Manufacturer Production 50V 
+								Power Tools Set Chinese Manufacturer Production 50V
 							</a>
 
 
 
 							<ul class="products-price">
-								
+
 								<li>
 									<span>In Stock</span>
 								</li>
@@ -753,8 +602,8 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 										Add To Cart
 									</a>
 								</li>
-								
-								
+
+
 							</ul>
 						</div>
 					</div>
@@ -762,7 +611,7 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 					<div class="single-products">
 						<div class="product-img">
 							<a href="#">
-								<img src="assets/images/products/product-5.jpg" alt="Image">
+								<img src="assets/rawad/images/products/product-5.jpg" alt="Image">
 							</a>
 
 							<span class="hot">Hot</span>
@@ -776,7 +625,7 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 
 
 							<ul class="products-price">
-								
+
 								<li>
 									<span>In Stock</span>
 								</li>
@@ -789,8 +638,8 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 										Add To Cart
 									</a>
 								</li>
-								
-								
+
+
 							</ul>
 						</div>
 					</div>
@@ -813,26 +662,26 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 								<div class="single-products">
 									<div class="product-img">
 										<a href="#">
-											<img src="assets/images/products/product-6.jpg" alt="Image">
+											<img src="assets/rawad/images/products/product-6.jpg" alt="Image">
 										</a>
 
 										<span class="hot">Hot</span>
 									</div>
-			
+
 									<div class="product-content">
 										<a href="#" class="title">
 											Cordless Drill Professional Combo Drill And Screwdriver
 										</a>
-			
 
-			
+
+
 										<ul class="products-price">
-											
+
 											<li>
 												<span>In Stock</span>
 											</li>
 										</ul>
-			
+
 										<ul class="products-cart-wish-view">
 											<li>
 												<a href="#" class="default-btn">
@@ -840,35 +689,35 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 													Add To Cart
 												</a>
 											</li>
-											
-											
+
+
 										</ul>
 									</div>
 								</div>
-			
+
 								<div class="single-products">
 									<div class="product-img">
 										<a href="#">
-											<img src="assets/images/products/product-7.jpg" alt="Image">
+											<img src="assets/rawad/images/products/product-7.jpg" alt="Image">
 										</a>
 
 										<span class="hot new">New</span>
 									</div>
-			
+
 									<div class="product-content">
 										<a href="#" class="title">
 											Professional Cordless Drill Power Tools Competitive
 										</a>
-			
 
-			
+
+
 										<ul class="products-price">
-											
+
 											<li>
 												<span>In Stock</span>
 											</li>
 										</ul>
-			
+
 										<ul class="products-cart-wish-view">
 											<li>
 												<a href="#" class="default-btn">
@@ -876,35 +725,35 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 													Add To Cart
 												</a>
 											</li>
-											
-											
+
+
 										</ul>
 									</div>
 								</div>
-			
+
 								<div class="single-products">
 									<div class="product-img">
 										<a href="#">
-											<img src="assets/images/products/product-8.jpg" alt="Image">
+											<img src="assets/rawad/images/products/product-8.jpg" alt="Image">
 										</a>
 
 										<span class="hot">Hot</span>
 									</div>
-			
+
 									<div class="product-content">
 										<a href="#" class="title">
 											DFMALB 20V Max XX Oscillating Multi Tool Variable Speed Tool
 										</a>
-			
 
-			
+
+
 										<ul class="products-price">
-											
+
 											<li>
 												<span>In Stock</span>
 											</li>
 										</ul>
-			
+
 										<ul class="products-cart-wish-view">
 											<li>
 												<a href="#" class="default-btn">
@@ -912,35 +761,35 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 													Add To Cart
 												</a>
 											</li>
-											
-											
+
+
 										</ul>
 									</div>
 								</div>
-			
+
 								<div class="single-products">
 									<div class="product-img">
 										<a href="#">
-											<img src="assets/images/products/product-9.jpg" alt="Image">
+											<img src="assets/rawad/images/products/product-9.jpg" alt="Image">
 										</a>
 
 										<span class="hot new">New</span>
 									</div>
-			
+
 									<div class="product-content">
 										<a href="#" class="title">
-											Power Tools Set Chinese Manufacturer Production 50V 
+											Power Tools Set Chinese Manufacturer Production 50V
 										</a>
-			
 
-			
+
+
 										<ul class="products-price">
-											
+
 											<li>
 												<span>In Stock</span>
 											</li>
 										</ul>
-			
+
 										<ul class="products-cart-wish-view">
 											<li>
 												<a href="#" class="default-btn">
@@ -948,8 +797,8 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 													Add To Cart
 												</a>
 											</li>
-											
-											
+
+
 										</ul>
 									</div>
 								</div>
@@ -999,29 +848,29 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 						<div class="customer-slider owl-carousel owl-theme">
 							<div class="single-customer bg-fff5e7">
 								<div class="avatar">
-									<img src="assets/images/customer/customer-1.png" class="customer" alt="Image">
-									<img src="assets/images/customer/quote.png" class="quote" alt="Image">
-	
+									<img src="assets/rawad/images/customer/customer-1.png" class="customer" alt="Image">
+									<img src="assets/rawad/images/customer/quote.png" class="quote" alt="Image">
+
 									<div class="avatar-name">
 										<h3>Georgia Cargill</h3>
 										<span>Finance Officer</span>
 									</div>
 								</div>
-	
+
 								<p>"Vivamus suscipit tortor eget felis porttitor volutpat. Nulla porttitor accumsan tincidunt. Lorem ipsum dolor sit amet, consectetur elit. Donec sollicitudin molestie eget malesuada accumsan sit amet, consectetur."</p>
 							</div>
-	
+
 							<div class="single-customer bg-fff5e7">
 								<div class="avatar">
-									<img src="assets/images/customer/customer-2.png" class="customer" alt="Image">
-									<img src="assets/images/customer/quote.png" class="quote" alt="Image">
-	
+									<img src="assets/rawad/images/customer/customer-2.png" class="customer" alt="Image">
+									<img src="assets/rawad/images/customer/quote.png" class="quote" alt="Image">
+
 									<div class="avatar-name">
 										<h3>Alex Dew</h3>
 										<span>Finance Marketer</span>
 									</div>
 								</div>
-	
+
 								<p>"Vivamus suscipit tortor eget felis porttitor volutpat. Nulla porttitor accumsan tincidunt. Lorem ipsum dolor sit amet, consectetur elit. Donec sollicitudin molestie eget malesuada accumsan sit amet, consectetur."</p>
 							</div>
 						</div>
@@ -1039,13 +888,13 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 										<div class="col-xl-6">
 											<div class="product-img">
 												<a href="#">
-													<img src="assets/images/products/product-11.jpg" alt="Image">
+													<img src="assets/rawad/images/products/product-11.jpg" alt="Image">
 												</a>
-	
+
 												<span class="hot new">New</span>
 											</div>
 										</div>
-	
+
 										<div class="col-xl-6">
 											<div class="product-content">
 												<a href="#" class="title">
@@ -1053,20 +902,23 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 												</a>
 
 												<span class="in-stock">In Stock</span>
-					
 
-					
+
+
 												<ul class="products-price">
-													
+													<li>
+														₹60.00
+														<Del>₹99.00</Del>
+													</li>
 												</ul>
-	
+
 												<div id="timer">
 													<div id="days"></div>
 													<div id="hours"></div>
 													<div id="minutes"></div>
 													<div id="seconds"></div>
 												</div>
-					
+
 												<ul class="products-cart-wish-view">
 													<li>
 														<a href="#" class="default-btn">
@@ -1085,13 +937,13 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 										<div class="col-xl-6">
 											<div class="product-img">
 												<a href="#">
-													<img src="assets/images/products/product-10.jpg" alt="Image">
+													<img src="assets/rawad/images/products/product-10.jpg" alt="Image">
 												</a>
-	
+
 												<span class="hot new">New</span>
 											</div>
 										</div>
-	
+
 										<div class="col-xl-6">
 											<div class="product-content">
 												<a href="#" class="title">
@@ -1100,18 +952,18 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 
 												<span class="in-stock">In Stock</span>
 
-					
+
 												<ul class="products-price">
-													
+
 												</ul>
-	
+
 												<div id="timers">
 													<div id="days-p"></div>
 													<div id="hours-p"></div>
 													<div id="minutes-p"></div>
 													<div id="seconds-p"></div>
 												</div>
-					
+
 												<ul class="products-cart-wish-view">
 													<li>
 														<a href="#" class="default-btn">
@@ -1130,13 +982,13 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 										<div class="col-xl-6">
 											<div class="product-img">
 												<a href="#">
-													<img src="assets/images/products/product-10.jpg" alt="Image">
+													<img src="	assets/rawad/images/products/product-10.jpg" alt="Image">
 												</a>
-	
+
 												<span class="hot new">New</span>
 											</div>
 										</div>
-	
+
 										<div class="col-xl-6">
 											<div class="product-content">
 												<a href="#" class="title">
@@ -1145,18 +997,18 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 
 												<span class="in-stock">In Stock</span>
 
-					
+
 												<ul class="products-price">
-													
+
 												</ul>
-	
+
 												<div id="timerss">
 													<div id="days-pp"></div>
 													<div id="hours-pp"></div>
 													<div id="minutes-pp"></div>
 													<div id="seconds-pp"></div>
 												</div>
-					
+
 												<ul class="products-cart-wish-view">
 													<li>
 														<a href="#" class="default-btn">
@@ -1192,23 +1044,23 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 						<div class="single-products new-arrivals">
 							<div class="product-img">
 								<a href="#">
-									<img src="assets/images/products/product-17.jpg" alt="Image">
+									<img src="assets/rawad/images/products/product-17.jpg" alt="Image">
 								</a>
 
 								<span class="hot new">New</span>
 							</div>
-	
+
 							<div class="product-content">
 								<a href="#" class="title">
-									Electrical Magnetic Impact Power Hammer Drills 
+									Electrical Magnetic Impact Power Hammer Drills
 								</a>
-	
 
-	
+
+
 								<ul class="products-price">
-									
+
 								</ul>
-	
+
 								<ul class="products-cart-wish-view">
 									<li>
 										<a href="#" class="default-btn">
@@ -1216,8 +1068,8 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 											Add To Cart
 										</a>
 									</li>
-									
-									
+
+
 								</ul>
 							</div>
 						</div>
@@ -1227,24 +1079,24 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 						<div class="single-products new-arrivals">
 							<div class="product-img">
 								<a href="#">
-									<img src="assets/images/products/product-18.jpg" alt="Image">
+									<img src="assets/rawad/images/products/product-18.jpg" alt="Image">
 								</a>
 							</div>
-	
+
 							<div class="product-content">
 								<a href="#" class="title">
-									High Quality Electric Hand Planer, 4-3/8-Inch 
+									High Quality Electric Hand Planer, 4-3/8-Inch
 								</a>
-	
 
-	
+
+
 								<ul class="products-price">
-									
+
 									<li>
 										<span>In Stock</span>
 									</li>
 								</ul>
-	
+
 								<ul class="products-cart-wish-view">
 									<li>
 										<a href="#" class="default-btn">
@@ -1252,8 +1104,8 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 											Add To Cart
 										</a>
 									</li>
-									
-									
+
+
 								</ul>
 							</div>
 						</div>
@@ -1263,23 +1115,23 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 						<div class="single-products new-arrivals">
 							<div class="product-img">
 								<a href="#">
-									<img src="assets/images/products/product-19.jpg" alt="Image">
+									<img src="assets/rawad/images/products/product-19.jpg" alt="Image">
 								</a>
 
 								<span class="hot new">New</span>
 							</div>
-	
+
 							<div class="product-content">
 								<a href="#" class="title">
 									White Whale Vacuum Cleaner High Quality
 								</a>
-	
 
-	
+
+
 								<ul class="products-price">
-									
+
 								</ul>
-	
+
 								<ul class="products-cart-wish-view">
 									<li>
 										<a href="#" class="default-btn">
@@ -1287,8 +1139,8 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 											Add To Cart
 										</a>
 									</li>
-									
-									
+
+
 								</ul>
 							</div>
 						</div>
@@ -1298,24 +1150,24 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 						<div class="single-products new-arrivals">
 							<div class="product-img">
 								<a href="#">
-									<img src="assets/images/products/product-20.jpg" alt="Image">
+									<img src="assets/rawad/images/products/product-20.jpg" alt="Image">
 								</a>
 							</div>
-	
+
 							<div class="product-content">
 								<a href="#" class="title">
 									High Quality Carbon Steel Mini Drilling Machines
 								</a>
-	
 
-	
+
+
 								<ul class="products-price">
-									
+
 									<li>
 										<span>In Stock</span>
 									</li>
 								</ul>
-	
+
 								<ul class="products-cart-wish-view">
 									<li>
 										<a href="#" class="default-btn">
@@ -1323,8 +1175,8 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 											Add To Cart
 										</a>
 									</li>
-									
-									
+
+
 								</ul>
 							</div>
 						</div>
@@ -1334,24 +1186,24 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 						<div class="single-products new-arrivals">
 							<div class="product-img">
 								<a href="#">
-									<img src="assets/images/products/product-21.jpg" alt="Image">
+									<img src="assets/rawad/images/products/product-21.jpg" alt="Image">
 								</a>
 							</div>
-	
+
 							<div class="product-content">
 								<a href="#" class="title">
 									Power Hammer Drills 200V Machine Screwdriver
 								</a>
-	
 
-	
+
+
 								<ul class="products-price">
-									
+
 									<li>
 										<span>In Stock</span>
 									</li>
 								</ul>
-	
+
 								<ul class="products-cart-wish-view">
 									<li>
 										<a href="#" class="default-btn">
@@ -1359,8 +1211,8 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 											Add To Cart
 										</a>
 									</li>
-									
-									
+
+
 								</ul>
 							</div>
 						</div>
@@ -1370,23 +1222,23 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 						<div class="single-products new-arrivals">
 							<div class="product-img">
 								<a href="#">
-									<img src="assets/images/products/product-22.jpg" alt="Image">
+									<img src="assets/rawad/images/products/product-22.jpg" alt="Image">
 								</a>
 
 								<span class="hot new">New</span>
 							</div>
-	
+
 							<div class="product-content">
 								<a href="#" class="title">
 									Multi-function Screw Driver Set For Home Use
 								</a>
-	
 
-	
+
+
 								<ul class="products-price">
-									
+
 								</ul>
-	
+
 								<ul class="products-cart-wish-view">
 									<li>
 										<a href="#" class="default-btn">
@@ -1394,8 +1246,8 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 											Add To Cart
 										</a>
 									</li>
-									
-									
+
+
 								</ul>
 							</div>
 						</div>
@@ -1405,21 +1257,21 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 						<div class="single-products new-arrivals">
 							<div class="product-img">
 								<a href="#">
-									<img src="assets/images/products/product-23.jpg" alt="Image">
+									<img src="assets/rawad/images/products/product-23.jpg" alt="Image">
 								</a>
 							</div>
-	
+
 							<div class="product-content">
 								<a href="#" class="title">
 									Wall Polishing Square Sander Electric Machine
 								</a>
-	
 
-	
+
+
 								<ul class="products-price">
-									
+
 								</ul>
-	
+
 								<ul class="products-cart-wish-view">
 									<li>
 										<a href="#" class="default-btn">
@@ -1427,8 +1279,8 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 											Add To Cart
 										</a>
 									</li>
-									
-									
+
+
 								</ul>
 							</div>
 						</div>
@@ -1438,26 +1290,26 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 						<div class="single-products new-arrivals">
 							<div class="product-img">
 								<a href="#">
-									<img src="assets/images/products/product-24.jpg" alt="Image">
+									<img src="assets/rawad/images/products/product-24.jpg" alt="Image">
 								</a>
 
 								<span class="hot new">New</span>
 							</div>
-	
+
 							<div class="product-content">
 								<a href="#" class="title">
 									High Quality Carbon Steel Professional Power Tools
 								</a>
-	
 
-	
+
+
 								<ul class="products-price">
-									
+
 									<li>
 										<span>In Stock</span>
 									</li>
 								</ul>
-	
+
 								<ul class="products-cart-wish-view">
 									<li>
 										<a href="#" class="default-btn">
@@ -1465,8 +1317,8 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 											Add To Cart
 										</a>
 									</li>
-									
-									
+
+
 								</ul>
 							</div>
 						</div>
@@ -1500,16 +1352,16 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 							<div class="section-title">
 								<h2>Categories</h2>
 							</div>
-							
+
 							<ul class="tabs">
 								<li>
 									CUTTER
 								</li>
-				
+
 								<li>
 									TOOLS SET
 								</li>
-			
+
 								<li>
 									VACUUM CLEANER
 								</li>
@@ -1520,7 +1372,7 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 
 								<li>HIGH PRESSURE CLEANER MACHINE
 								</li>
-								
+
 								<li>
 									MANUAL TORQUE
 								</li>
@@ -1534,7 +1386,7 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 								</li>
 							</ul>
 						</div>
-	
+
 						<div class="col-lg-9">
 							<div class="tab_content">
 								<div class="tabs_item">
@@ -1542,22 +1394,22 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 										<div class="single-products new-arrivals">
 											<div class="product-img">
 												<a href="#">
-													<img src="assets/images/products/product-17.jpg" alt="Image">
-												</a>
-		
-												<span class="hot new">New</span>
-											</div>
-					
-											<div class="product-content">
-												<a href="#" class="title">
-													Electrical Magnetic Impact Power Hammer Drills 
+													<img src="assets/rawad/images/products/product-17.jpg" alt="Image">
 												</a>
 
-					
+												<span class="hot new">New</span>
+											</div>
+
+											<div class="product-content">
+												<a href="#" class="title">
+													Electrical Magnetic Impact Power Hammer Drills
+												</a>
+
+
 												<ul class="products-price">
-													
+
 												</ul>
-					
+
 												<ul class="products-cart-wish-view">
 													<li>
 														<a href="#" class="default-btn">
@@ -1565,33 +1417,33 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 															Add To Cart
 														</a>
 													</li>
-													
-													
+
+
 												</ul>
 											</div>
 										</div>
-										
+
 										<div class="single-products new-arrivals">
 											<div class="product-img">
 												<a href="#">
-													<img src="assets/images/products/product-18.jpg" alt="Image">
+													<img src="assets/rawad/images/products/product-18.jpg" alt="Image">
 												</a>
 											</div>
-					
+
 											<div class="product-content">
 												<a href="#" class="title">
-													High Quality Electric Hand Planer, 4-3/8-Inch 
+													High Quality Electric Hand Planer, 4-3/8-Inch
 												</a>
-					
 
-					
+
+
 												<ul class="products-price">
-													
+
 													<li>
 														<span>In Stock</span>
 													</li>
 												</ul>
-					
+
 												<ul class="products-cart-wish-view">
 													<li>
 														<a href="#" class="default-btn">
@@ -1599,31 +1451,31 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 															Add To Cart
 														</a>
 													</li>
-													
-													
+
+
 												</ul>
 											</div>
 										</div>
-										
+
 										<div class="single-products new-arrivals">
 											<div class="product-img">
 												<a href="#">
-													<img src="assets/images/products/product-19.jpg" alt="Image">
+													<img src="assets/rawad/images/products/product-19.jpg" alt="Image">
 												</a>
-		
+
 												<span class="hot new">New</span>
 											</div>
-					
+
 											<div class="product-content">
 												<a href="#" class="title">
 													White Whale Vacuum Cleaner High Quality
 												</a>
 
-					
+
 												<ul class="products-price">
-													
+
 												</ul>
-					
+
 												<ul class="products-cart-wish-view">
 													<li>
 														<a href="#" class="default-btn">
@@ -1631,33 +1483,33 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 															Add To Cart
 														</a>
 													</li>
-													
-													
+
+
 												</ul>
 											</div>
 										</div>
-										
+
 										<div class="single-products new-arrivals">
 											<div class="product-img">
 												<a href="#">
-													<img src="assets/images/products/product-20.jpg" alt="Image">
+													<img src="assets/rawad/images/products/product-20.jpg" alt="Image">
 												</a>
 											</div>
-					
+
 											<div class="product-content">
 												<a href="#" class="title">
 													High Quality Carbon Steel Mini Drilling Machines
 												</a>
-					
 
-					
+
+
 												<ul class="products-price">
-													
+
 													<li>
 														<span>In Stock</span>
 													</li>
 												</ul>
-					
+
 												<ul class="products-cart-wish-view">
 													<li>
 														<a href="#" class="default-btn">
@@ -1665,33 +1517,33 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 															Add To Cart
 														</a>
 													</li>
-													
-													
+
+
 												</ul>
 											</div>
 										</div>
-									
+
 										<div class="single-products new-arrivals">
 											<div class="product-img">
 												<a href="#">
-													<img src="assets/images/products/product-21.jpg" alt="Image">
+													<img src="assets/rawad/images/products/product-21.jpg" alt="Image">
 												</a>
 											</div>
-					
+
 											<div class="product-content">
 												<a href="#" class="title">
 													Power Hammer Drills 200V Machine Screwdriver
 												</a>
-					
 
-					
+
+
 												<ul class="products-price">
-													
+
 													<li>
 														<span>In Stock</span>
 													</li>
 												</ul>
-					
+
 												<ul class="products-cart-wish-view">
 													<li>
 														<a href="#" class="default-btn">
@@ -1699,29 +1551,29 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 															Add To Cart
 														</a>
 													</li>
-													
-													
+
+
 												</ul>
 											</div>
 										</div>
-										
+
 										<div class="single-products new-arrivals">
 											<div class="product-img">
 												<a href="#">
-													<img src="assets/images/products/product-22.jpg" alt="Image">
+													<img src="assets/rawad/images/products/product-22.jpg" alt="Image">
 												</a>
-		
+
 												<span class="hot new">New</span>
 											</div>
-					
+
 											<div class="product-content">
 												<a href="#" class="title">
 													Multi-function Screw Driver Set For Home Use
 												</a>
 												<ul class="products-price">
-													
+
 												</ul>
-					
+
 												<ul class="products-cart-wish-view">
 													<li>
 														<a href="#" class="default-btn">
@@ -1729,29 +1581,29 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 															Add To Cart
 														</a>
 													</li>
-													
-													
+
+
 												</ul>
 											</div>
 										</div>
-										
+
 										<div class="single-products new-arrivals">
 											<div class="product-img">
 												<a href="#">
-													<img src="assets/images/products/product-23.jpg" alt="Image">
+													<img src="assets/rawad/images/products/product-23.jpg" alt="Image">
 												</a>
 											</div>
-					
+
 											<div class="product-content">
 												<a href="#" class="title">
 													Wall Polishing Square Sander Electric Machine
 												</a>
 
-					
+
 												<ul class="products-price">
-													
+
 												</ul>
-					
+
 												<ul class="products-cart-wish-view">
 													<li>
 														<a href="#" class="default-btn">
@@ -1759,34 +1611,34 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 															Add To Cart
 														</a>
 													</li>
-													
-													
+
+
 												</ul>
 											</div>
 										</div>
-										
+
 										<div class="single-products new-arrivals">
 											<div class="product-img">
 												<a href="#">
-													<img src="assets/images/products/product-24.jpg" alt="Image">
+													<img src="assets/rawad/images/products/product-24.jpg" alt="Image">
 												</a>
-		
+
 												<span class="hot new">New</span>
 											</div>
-					
+
 											<div class="product-content">
 												<a href="#" class="title">
 													High Quality Carbon Steel Professional Power Tools
 												</a>
 
-					
+
 												<ul class="products-price">
-													
+
 													<li>
 														<span>In Stock</span>
 													</li>
 												</ul>
-					
+
 												<ul class="products-cart-wish-view">
 													<li>
 														<a href="#" class="default-btn">
@@ -1794,8 +1646,8 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 															Add To Cart
 														</a>
 													</li>
-													
-													
+
+
 												</ul>
 											</div>
 										</div>
@@ -1807,22 +1659,22 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 										<div class="single-products new-arrivals">
 											<div class="product-img">
 												<a href="#">
-													<img src="assets/images/products/product-17.jpg" alt="Image">
-												</a>
-		
-												<span class="hot new">New</span>
-											</div>
-					
-											<div class="product-content">
-												<a href="#" class="title">
-													Electrical Magnetic Impact Power Hammer Drills 
+													<img src="assets/rawad/images/products/product-17.jpg" alt="Image">
 												</a>
 
-					
+												<span class="hot new">New</span>
+											</div>
+
+											<div class="product-content">
+												<a href="#" class="title">
+													Electrical Magnetic Impact Power Hammer Drills
+												</a>
+
+
 												<ul class="products-price">
-													
+
 												</ul>
-					
+
 												<ul class="products-cart-wish-view">
 													<li>
 														<a href="#" class="default-btn">
@@ -1830,33 +1682,33 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 															Add To Cart
 														</a>
 													</li>
-													
-													
+
+
 												</ul>
 											</div>
 										</div>
-										
+
 										<div class="single-products new-arrivals">
 											<div class="product-img">
 												<a href="#">
-													<img src="assets/images/products/product-18.jpg" alt="Image">
+													<img src="assets/rawad/images/products/product-18.jpg" alt="Image">
 												</a>
 											</div>
-					
+
 											<div class="product-content">
 												<a href="#" class="title">
-													High Quality Electric Hand Planer, 4-3/8-Inch 
+													High Quality Electric Hand Planer, 4-3/8-Inch
 												</a>
-					
 
-					
+
+
 												<ul class="products-price">
-													
+
 													<li>
 														<span>In Stock</span>
 													</li>
 												</ul>
-					
+
 												<ul class="products-cart-wish-view">
 													<li>
 														<a href="#" class="default-btn">
@@ -1864,31 +1716,31 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 															Add To Cart
 														</a>
 													</li>
-													
-													
+
+
 												</ul>
 											</div>
 										</div>
-										
+
 										<div class="single-products new-arrivals">
 											<div class="product-img">
 												<a href="#">
-													<img src="assets/images/products/product-19.jpg" alt="Image">
+													<img src="assets/rawad/images/products/product-19.jpg" alt="Image">
 												</a>
-		
+
 												<span class="hot new">New</span>
 											</div>
-					
+
 											<div class="product-content">
 												<a href="#" class="title">
 													White Whale Vacuum Cleaner High Quality
 												</a>
 
-					
+
 												<ul class="products-price">
-													
+
 												</ul>
-					
+
 												<ul class="products-cart-wish-view">
 													<li>
 														<a href="#" class="default-btn">
@@ -1896,33 +1748,33 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 															Add To Cart
 														</a>
 													</li>
-													
-													
+
+
 												</ul>
 											</div>
 										</div>
-										
+
 										<div class="single-products new-arrivals">
 											<div class="product-img">
 												<a href="#">
-													<img src="assets/images/products/product-20.jpg" alt="Image">
+													<img src="assets/rawad/images/products/product-20.jpg" alt="Image">
 												</a>
 											</div>
-					
+
 											<div class="product-content">
 												<a href="#" class="title">
 													High Quality Carbon Steel Mini Drilling Machines
 												</a>
-					
 
-					
+
+
 												<ul class="products-price">
-													
+
 													<li>
 														<span>In Stock</span>
 													</li>
 												</ul>
-					
+
 												<ul class="products-cart-wish-view">
 													<li>
 														<a href="#" class="default-btn">
@@ -1930,33 +1782,33 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 															Add To Cart
 														</a>
 													</li>
-													
-													
+
+
 												</ul>
 											</div>
 										</div>
-									
+
 										<div class="single-products new-arrivals">
 											<div class="product-img">
 												<a href="#">
-													<img src="assets/images/products/product-21.jpg" alt="Image">
+													<img src="assets/rawad/images/products/product-21.jpg" alt="Image">
 												</a>
 											</div>
-					
+
 											<div class="product-content">
 												<a href="#" class="title">
 													Power Hammer Drills 200V Machine Screwdriver
 												</a>
-					
 
-					
+
+
 												<ul class="products-price">
-													
+
 													<li>
 														<span>In Stock</span>
 													</li>
 												</ul>
-					
+
 												<ul class="products-cart-wish-view">
 													<li>
 														<a href="#" class="default-btn">
@@ -1964,30 +1816,30 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 															Add To Cart
 														</a>
 													</li>
-													
-													
+
+
 												</ul>
 											</div>
 										</div>
-										
+
 										<div class="single-products new-arrivals">
 											<div class="product-img">
 												<a href="#">
-													<img src="assets/images/products/product-22.jpg" alt="Image">
+													<img src="assets/rawad/images/products/product-22.jpg" alt="Image">
 												</a>
-		
+
 												<span class="hot new">New</span>
 											</div>
-					
+
 											<div class="product-content">
 												<a href="#" class="title">
 													Multi-function Screw Driver Set For Home Use
 												</a>
-				
+
 												<ul class="products-price">
-													
+
 												</ul>
-					
+
 												<ul class="products-cart-wish-view">
 													<li>
 														<a href="#" class="default-btn">
@@ -1995,29 +1847,29 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 															Add To Cart
 														</a>
 													</li>
-													
-													
+
+
 												</ul>
 											</div>
 										</div>
-										
+
 										<div class="single-products new-arrivals">
 											<div class="product-img">
 												<a href="#">
-													<img src="assets/images/products/product-23.jpg" alt="Image">
+													<img src="assets/rawad/images/products/product-23.jpg" alt="Image">
 												</a>
 											</div>
-					
+
 											<div class="product-content">
 												<a href="#" class="title">
 													Wall Polishing Square Sander Electric Machine
 												</a>
 
-					
+
 												<ul class="products-price">
-													
+
 												</ul>
-					
+
 												<ul class="products-cart-wish-view">
 													<li>
 														<a href="#" class="default-btn">
@@ -2025,838 +1877,43 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 															Add To Cart
 														</a>
 													</li>
-													
-													
+
+
 												</ul>
 											</div>
 										</div>
-										
+
 										<div class="single-products new-arrivals">
 											<div class="product-img">
 												<a href="#">
-													<img src="assets/images/products/product-24.jpg" alt="Image">
+													<img src="assets/rawad/images/products/product-24.jpg" alt="Image">
 												</a>
-		
+
 												<span class="hot new">New</span>
 											</div>
-					
+
 											<div class="product-content">
 												<a href="#" class="title">
 													High Quality Carbon Steel Professional Power Tools
 												</a>
 
-					
+
 												<ul class="products-price">
-													
+
 													<li>
 														<span>In Stock</span>
 													</li>
 												</ul>
-					
-												<ul class="products-cart-wish-view">
-													<li>
-														<a href="#" class="default-btn">
-															<i class="ri-shopping-cart-line"></i>
-															Add To Cart
-														</a>
-													</li>
-													
-													
-												</ul>
-											</div>
-										</div>
-									</div>
-								</div>
 
-								<div class="tabs_item">	
-									<div class="categories-slider owl-carousel owl-theme">
-										<div class="single-products new-arrivals">
-											<div class="product-img">
-												<a href="#">
-													<img src="assets/images/products/product-17.jpg" alt="Image">
-												</a>
-		
-												<span class="hot new">New</span>
-											</div>
-					
-											<div class="product-content">
-												<a href="#" class="title">
-													Electrical Magnetic Impact Power Hammer Drills 
-												</a>
+												<ul class="products-cart-wish-view">
+													<li>
+														<a href="#" class="default-btn">
+															<i class="ri-shopping-cart-line"></i>
+															Add To Cart
+														</a>
+													</li>
 
-					
-												<ul class="products-price">
-													
-												</ul>
-					
-												<ul class="products-cart-wish-view">
-													<li>
-														<a href="#" class="default-btn">
-															<i class="ri-shopping-cart-line"></i>
-															Add To Cart
-														</a>
-													</li>
-													
-													
-												</ul>
-											</div>
-										</div>
-										
-										<div class="single-products new-arrivals">
-											<div class="product-img">
-												<a href="#">
-													<img src="assets/images/products/product-18.jpg" alt="Image">
-												</a>
-											</div>
-					
-											<div class="product-content">
-												<a href="#" class="title">
-													High Quality Electric Hand Planer, 4-3/8-Inch 
-												</a>
-					
 
-					
-												<ul class="products-price">
-													
-													<li>
-														<span>In Stock</span>
-													</li>
-												</ul>
-					
-												<ul class="products-cart-wish-view">
-													<li>
-														<a href="#" class="default-btn">
-															<i class="ri-shopping-cart-line"></i>
-															Add To Cart
-														</a>
-													</li>
-													
-													
-												</ul>
-											</div>
-										</div>
-										
-										<div class="single-products new-arrivals">
-											<div class="product-img">
-												<a href="#">
-													<img src="assets/images/products/product-19.jpg" alt="Image">
-												</a>
-		
-												<span class="hot new">New</span>
-											</div>
-					
-											<div class="product-content">
-												<a href="#" class="title">
-													White Whale Vacuum Cleaner High Quality
-												</a>
-
-					
-												<ul class="products-price">
-													
-												</ul>
-					
-												<ul class="products-cart-wish-view">
-													<li>
-														<a href="#" class="default-btn">
-															<i class="ri-shopping-cart-line"></i>
-															Add To Cart
-														</a>
-													</li>
-													
-													
-												</ul>
-											</div>
-										</div>
-										
-										<div class="single-products new-arrivals">
-											<div class="product-img">
-												<a href="#">
-													<img src="assets/images/products/product-20.jpg" alt="Image">
-												</a>
-											</div>
-					
-											<div class="product-content">
-												<a href="#" class="title">
-													High Quality Carbon Steel Mini Drilling Machines
-												</a>
-					
-
-					
-												<ul class="products-price">
-													
-													<li>
-														<span>In Stock</span>
-													</li>
-												</ul>
-					
-												<ul class="products-cart-wish-view">
-													<li>
-														<a href="#" class="default-btn">
-															<i class="ri-shopping-cart-line"></i>
-															Add To Cart
-														</a>
-													</li>
-													
-													
-												</ul>
-											</div>
-										</div>
-									
-										<div class="single-products new-arrivals">
-											<div class="product-img">
-												<a href="#">
-													<img src="assets/images/products/product-21.jpg" alt="Image">
-												</a>
-											</div>
-					
-											<div class="product-content">
-												<a href="#" class="title">
-													Power Hammer Drills 200V Machine Screwdriver
-												</a>
-					
-
-					
-												<ul class="products-price">
-													
-													<li>
-														<span>In Stock</span>
-													</li>
-												</ul>
-					
-												<ul class="products-cart-wish-view">
-													<li>
-														<a href="#" class="default-btn">
-															<i class="ri-shopping-cart-line"></i>
-															Add To Cart
-														</a>
-													</li>
-													
-													
-												</ul>
-											</div>
-										</div>
-										
-										<div class="single-products new-arrivals">
-											<div class="product-img">
-												<a href="#">
-													<img src="assets/images/products/product-22.jpg" alt="Image">
-												</a>
-		
-												<span class="hot new">New</span>
-											</div>
-					
-											<div class="product-content">
-												<a href="#" class="title">
-													Multi-function Screw Driver Set For Home Use
-												</a>
-												<ul class="products-price">
-													
-												</ul>
-					
-												<ul class="products-cart-wish-view">
-													<li>
-														<a href="#" class="default-btn">
-															<i class="ri-shopping-cart-line"></i>
-															Add To Cart
-														</a>
-													</li>
-													
-													
-												</ul>
-											</div>
-										</div>
-										
-										<div class="single-products new-arrivals">
-											<div class="product-img">
-												<a href="#">
-													<img src="assets/images/products/product-23.jpg" alt="Image">
-												</a>
-											</div>
-					
-											<div class="product-content">
-												<a href="#" class="title">
-													Wall Polishing Square Sander Electric Machine
-												</a>
-
-					
-												<ul class="products-price">
-													
-												</ul>
-					
-												<ul class="products-cart-wish-view">
-													<li>
-														<a href="#" class="default-btn">
-															<i class="ri-shopping-cart-line"></i>
-															Add To Cart
-														</a>
-													</li>
-													
-													
-												</ul>
-											</div>
-										</div>
-										
-										<div class="single-products new-arrivals">
-											<div class="product-img">
-												<a href="#">
-													<img src="assets/images/products/product-24.jpg" alt="Image">
-												</a>
-		
-												<span class="hot new">New</span>
-											</div>
-					
-											<div class="product-content">
-												<a href="#" class="title">
-													High Quality Carbon Steel Professional Power Tools
-												</a>
-
-					
-												<ul class="products-price">
-													
-													<li>
-														<span>In Stock</span>
-													</li>
-												</ul>
-					
-												<ul class="products-cart-wish-view">
-													<li>
-														<a href="#" class="default-btn">
-															<i class="ri-shopping-cart-line"></i>
-															Add To Cart
-														</a>
-													</li>
-													
-													
-												</ul>
-											</div>
-										</div>
-									</div>
-								</div>
-									
-								<div class="tabs_item">	
-									<div class="categories-slider owl-carousel owl-theme">
-										<div class="single-products new-arrivals">
-											<div class="product-img">
-												<a href="#">
-													<img src="assets/images/products/product-17.jpg" alt="Image">
-												</a>
-		
-												<span class="hot new">New</span>
-											</div>
-					
-											<div class="product-content">
-												<a href="#" class="title">
-													Electrical Magnetic Impact Power Hammer Drills 
-												</a>
-
-					
-												<ul class="products-price">
-													
-												</ul>
-					
-												<ul class="products-cart-wish-view">
-													<li>
-														<a href="#" class="default-btn">
-															<i class="ri-shopping-cart-line"></i>
-															Add To Cart
-														</a>
-													</li>
-													
-													
-												</ul>
-											</div>
-										</div>
-										
-										<div class="single-products new-arrivals">
-											<div class="product-img">
-												<a href="#">
-													<img src="assets/images/products/product-18.jpg" alt="Image">
-												</a>
-											</div>
-					
-											<div class="product-content">
-												<a href="#" class="title">
-													High Quality Electric Hand Planer, 4-3/8-Inch 
-												</a>
-					
-
-					
-												<ul class="products-price">
-													
-													<li>
-														<span>In Stock</span>
-													</li>
-												</ul>
-					
-												<ul class="products-cart-wish-view">
-													<li>
-														<a href="#" class="default-btn">
-															<i class="ri-shopping-cart-line"></i>
-															Add To Cart
-														</a>
-													</li>
-													
-													
-												</ul>
-											</div>
-										</div>
-										
-										<div class="single-products new-arrivals">
-											<div class="product-img">
-												<a href="#">
-													<img src="assets/images/products/product-19.jpg" alt="Image">
-												</a>
-		
-												<span class="hot new">New</span>
-											</div>
-					
-											<div class="product-content">
-												<a href="#" class="title">
-													White Whale Vacuum Cleaner High Quality
-												</a>
-
-					
-												<ul class="products-price">
-													
-												</ul>
-					
-												<ul class="products-cart-wish-view">
-													<li>
-														<a href="#" class="default-btn">
-															<i class="ri-shopping-cart-line"></i>
-															Add To Cart
-														</a>
-													</li>
-													
-													
-												</ul>
-											</div>
-										</div>
-										
-										<div class="single-products new-arrivals">
-											<div class="product-img">
-												<a href="#">
-													<img src="assets/images/products/product-20.jpg" alt="Image">
-												</a>
-											</div>
-					
-											<div class="product-content">
-												<a href="#" class="title">
-													High Quality Carbon Steel Mini Drilling Machines
-												</a>
-					
-
-					
-												<ul class="products-price">
-													
-													<li>
-														<span>In Stock</span>
-													</li>
-												</ul>
-					
-												<ul class="products-cart-wish-view">
-													<li>
-														<a href="#" class="default-btn">
-															<i class="ri-shopping-cart-line"></i>
-															Add To Cart
-														</a>
-													</li>
-													
-													
-												</ul>
-											</div>
-										</div>
-									
-										<div class="single-products new-arrivals">
-											<div class="product-img">
-												<a href="#">
-													<img src="assets/images/products/product-21.jpg" alt="Image">
-												</a>
-											</div>
-					
-											<div class="product-content">
-												<a href="#" class="title">
-													Power Hammer Drills 200V Machine Screwdriver
-												</a>
-					
-
-					
-												<ul class="products-price">
-													
-													<li>
-														<span>In Stock</span>
-													</li>
-												</ul>
-					
-												<ul class="products-cart-wish-view">
-													<li>
-														<a href="#" class="default-btn">
-															<i class="ri-shopping-cart-line"></i>
-															Add To Cart
-														</a>
-													</li>
-													
-													
-												</ul>
-											</div>
-										</div>
-										
-										<div class="single-products new-arrivals">
-											<div class="product-img">
-												<a href="#">
-													<img src="assets/images/products/product-22.jpg" alt="Image">
-												</a>
-		
-												<span class="hot new">New</span>
-											</div>
-					
-											<div class="product-content">
-												<a href="#" class="title">
-													Multi-function Screw Driver Set For Home Use
-												</a>
-												<ul class="products-price">
-													
-												</ul>
-					
-												<ul class="products-cart-wish-view">
-													<li>
-														<a href="#" class="default-btn">
-															<i class="ri-shopping-cart-line"></i>
-															Add To Cart
-														</a>
-													</li>
-													
-													
-												</ul>
-											</div>
-										</div>
-										
-										<div class="single-products new-arrivals">
-											<div class="product-img">
-												<a href="#">
-													<img src="assets/images/products/product-23.jpg" alt="Image">
-												</a>
-											</div>
-					
-											<div class="product-content">
-												<a href="#" class="title">
-													Wall Polishing Square Sander Electric Machine
-												</a>
-
-					
-												<ul class="products-price">
-													
-												</ul>
-					
-												<ul class="products-cart-wish-view">
-													<li>
-														<a href="#" class="default-btn">
-															<i class="ri-shopping-cart-line"></i>
-															Add To Cart
-														</a>
-													</li>
-													
-													
-												</ul>
-											</div>
-										</div>
-										
-										<div class="single-products new-arrivals">
-											<div class="product-img">
-												<a href="#">
-													<img src="assets/images/products/product-24.jpg" alt="Image">
-												</a>
-		
-												<span class="hot new">New</span>
-											</div>
-					
-											<div class="product-content">
-												<a href="#" class="title">
-													High Quality Carbon Steel Professional Power Tools
-												</a>
-
-					
-												<ul class="products-price">
-													
-													<li>
-														<span>In Stock</span>
-													</li>
-												</ul>
-					
-												<ul class="products-cart-wish-view">
-													<li>
-														<a href="#" class="default-btn">
-															<i class="ri-shopping-cart-line"></i>
-															Add To Cart
-														</a>
-													</li>
-													
-													
-												</ul>
-											</div>
-										</div>
-									</div>
-								</div>
-
-								<div class="tabs_item">	
-									<div class="categories-slider owl-carousel owl-theme">
-										<div class="single-products new-arrivals">
-											<div class="product-img">
-												<a href="#">
-													<img src="assets/images/products/product-17.jpg" alt="Image">
-												</a>
-		
-												<span class="hot new">New</span>
-											</div>
-					
-											<div class="product-content">
-												<a href="#" class="title">
-													Electrical Magnetic Impact Power Hammer Drills 
-												</a>
-
-					
-												<ul class="products-price">
-													
-												</ul>
-					
-												<ul class="products-cart-wish-view">
-													<li>
-														<a href="#" class="default-btn">
-															<i class="ri-shopping-cart-line"></i>
-															Add To Cart
-														</a>
-													</li>
-													
-													
-												</ul>
-											</div>
-										</div>
-										
-										<div class="single-products new-arrivals">
-											<div class="product-img">
-												<a href="#">
-													<img src="assets/images/products/product-18.jpg" alt="Image">
-												</a>
-											</div>
-					
-											<div class="product-content">
-												<a href="#" class="title">
-													High Quality Electric Hand Planer, 4-3/8-Inch 
-												</a>
-					
-
-					
-												<ul class="products-price">
-													
-													<li>
-														<span>In Stock</span>
-													</li>
-												</ul>
-					
-												<ul class="products-cart-wish-view">
-													<li>
-														<a href="#" class="default-btn">
-															<i class="ri-shopping-cart-line"></i>
-															Add To Cart
-														</a>
-													</li>
-													
-													
-												</ul>
-											</div>
-										</div>
-										
-										<div class="single-products new-arrivals">
-											<div class="product-img">
-												<a href="#">
-													<img src="assets/images/products/product-19.jpg" alt="Image">
-												</a>
-		
-												<span class="hot new">New</span>
-											</div>
-					
-											<div class="product-content">
-												<a href="#" class="title">
-													White Whale Vacuum Cleaner High Quality
-												</a>
-
-					
-												<ul class="products-price">
-													
-												</ul>
-					
-												<ul class="products-cart-wish-view">
-													<li>
-														<a href="#" class="default-btn">
-															<i class="ri-shopping-cart-line"></i>
-															Add To Cart
-														</a>
-													</li>
-													
-													
-												</ul>
-											</div>
-										</div>
-										
-										<div class="single-products new-arrivals">
-											<div class="product-img">
-												<a href="#">
-													<img src="assets/images/products/product-20.jpg" alt="Image">
-												</a>
-											</div>
-					
-											<div class="product-content">
-												<a href="#" class="title">
-													High Quality Carbon Steel Mini Drilling Machines
-												</a>
-					
-
-					
-												<ul class="products-price">
-													
-													<li>
-														<span>In Stock</span>
-													</li>
-												</ul>
-					
-												<ul class="products-cart-wish-view">
-													<li>
-														<a href="#" class="default-btn">
-															<i class="ri-shopping-cart-line"></i>
-															Add To Cart
-														</a>
-													</li>
-													
-													
-												</ul>
-											</div>
-										</div>
-									
-										<div class="single-products new-arrivals">
-											<div class="product-img">
-												<a href="#">
-													<img src="assets/images/products/product-21.jpg" alt="Image">
-												</a>
-											</div>
-					
-											<div class="product-content">
-												<a href="#" class="title">
-													Power Hammer Drills 200V Machine Screwdriver
-												</a>
-					
-
-					
-												<ul class="products-price">
-													
-													<li>
-														<span>In Stock</span>
-													</li>
-												</ul>
-					
-												<ul class="products-cart-wish-view">
-													<li>
-														<a href="#" class="default-btn">
-															<i class="ri-shopping-cart-line"></i>
-															Add To Cart
-														</a>
-													</li>
-													
-													
-												</ul>
-											</div>
-										</div>
-										
-										<div class="single-products new-arrivals">
-											<div class="product-img">
-												<a href="#">
-													<img src="assets/images/products/product-22.jpg" alt="Image">
-												</a>
-		
-												<span class="hot new">New</span>
-											</div>
-					
-											<div class="product-content">
-												<a href="#" class="title">
-													Multi-function Screw Driver Set For Home Use
-												</a>					
-												<ul class="products-price">
-													
-												</ul>
-					
-												<ul class="products-cart-wish-view">
-													<li>
-														<a href="#" class="default-btn">
-															<i class="ri-shopping-cart-line"></i>
-															Add To Cart
-														</a>
-													</li>
-													
-													
-												</ul>
-											</div>
-										</div>
-										
-										<div class="single-products new-arrivals">
-											<div class="product-img">
-												<a href="#">
-													<img src="assets/images/products/product-23.jpg" alt="Image">
-												</a>
-											</div>
-					
-											<div class="product-content">
-												<a href="#" class="title">
-													Wall Polishing Square Sander Electric Machine
-												</a>
-
-					
-												<ul class="products-price">
-													
-												</ul>
-					
-												<ul class="products-cart-wish-view">
-													<li>
-														<a href="#" class="default-btn">
-															<i class="ri-shopping-cart-line"></i>
-															Add To Cart
-														</a>
-													</li>
-													
-													
-												</ul>
-											</div>
-										</div>
-										
-										<div class="single-products new-arrivals">
-											<div class="product-img">
-												<a href="#">
-													<img src="assets/images/products/product-24.jpg" alt="Image">
-												</a>
-		
-												<span class="hot new">New</span>
-											</div>
-					
-											<div class="product-content">
-												<a href="#" class="title">
-													High Quality Carbon Steel Professional Power Tools
-												</a>
-
-					
-												<ul class="products-price">
-													
-													<li>
-														<span>In Stock</span>
-													</li>
-												</ul>
-					
-												<ul class="products-cart-wish-view">
-													<li>
-														<a href="#" class="default-btn">
-															<i class="ri-shopping-cart-line"></i>
-															Add To Cart
-														</a>
-													</li>
-													
-													
 												</ul>
 											</div>
 										</div>
@@ -2868,22 +1925,22 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 										<div class="single-products new-arrivals">
 											<div class="product-img">
 												<a href="#">
-													<img src="assets/images/products/product-17.jpg" alt="Image">
-												</a>
-		
-												<span class="hot new">New</span>
-											</div>
-					
-											<div class="product-content">
-												<a href="#" class="title">
-													Electrical Magnetic Impact Power Hammer Drills 
+													<img src="assets/rawad/images/products/product-17.jpg" alt="Image">
 												</a>
 
-					
+												<span class="hot new">New</span>
+											</div>
+
+											<div class="product-content">
+												<a href="#" class="title">
+													Electrical Magnetic Impact Power Hammer Drills
+												</a>
+
+
 												<ul class="products-price">
-													
+
 												</ul>
-					
+
 												<ul class="products-cart-wish-view">
 													<li>
 														<a href="#" class="default-btn">
@@ -2891,33 +1948,33 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 															Add To Cart
 														</a>
 													</li>
-													
-													
+
+
 												</ul>
 											</div>
 										</div>
-										
+
 										<div class="single-products new-arrivals">
 											<div class="product-img">
 												<a href="#">
-													<img src="assets/images/products/product-18.jpg" alt="Image">
+													<img src="assets/rawad/images/products/product-18.jpg" alt="Image">
 												</a>
 											</div>
-					
+
 											<div class="product-content">
 												<a href="#" class="title">
-													High Quality Electric Hand Planer, 4-3/8-Inch 
+													High Quality Electric Hand Planer, 4-3/8-Inch
 												</a>
-					
 
-					
+
+
 												<ul class="products-price">
-													
+
 													<li>
 														<span>In Stock</span>
 													</li>
 												</ul>
-					
+
 												<ul class="products-cart-wish-view">
 													<li>
 														<a href="#" class="default-btn">
@@ -2925,31 +1982,31 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 															Add To Cart
 														</a>
 													</li>
-													
-													
+
+
 												</ul>
 											</div>
 										</div>
-										
+
 										<div class="single-products new-arrivals">
 											<div class="product-img">
 												<a href="#">
-													<img src="assets/images/products/product-19.jpg" alt="Image">
+													<img src="assets/rawad/images/products/product-19.jpg" alt="Image">
 												</a>
-		
+
 												<span class="hot new">New</span>
 											</div>
-					
+
 											<div class="product-content">
 												<a href="#" class="title">
 													White Whale Vacuum Cleaner High Quality
 												</a>
 
-					
+
 												<ul class="products-price">
-													
+
 												</ul>
-					
+
 												<ul class="products-cart-wish-view">
 													<li>
 														<a href="#" class="default-btn">
@@ -2957,33 +2014,33 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 															Add To Cart
 														</a>
 													</li>
-													
-													
+
+
 												</ul>
 											</div>
 										</div>
-										
+
 										<div class="single-products new-arrivals">
 											<div class="product-img">
 												<a href="#">
-													<img src="assets/images/products/product-20.jpg" alt="Image">
+													<img src="assets/rawad/images/products/product-20.jpg" alt="Image">
 												</a>
 											</div>
-					
+
 											<div class="product-content">
 												<a href="#" class="title">
 													High Quality Carbon Steel Mini Drilling Machines
 												</a>
-					
 
-					
+
+
 												<ul class="products-price">
-													
+
 													<li>
 														<span>In Stock</span>
 													</li>
 												</ul>
-					
+
 												<ul class="products-cart-wish-view">
 													<li>
 														<a href="#" class="default-btn">
@@ -2991,33 +2048,33 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 															Add To Cart
 														</a>
 													</li>
-													
-													
+
+
 												</ul>
 											</div>
 										</div>
-									
+
 										<div class="single-products new-arrivals">
 											<div class="product-img">
 												<a href="#">
-													<img src="assets/images/products/product-21.jpg" alt="Image">
+													<img src="assets/rawad/images/products/product-21.jpg" alt="Image">
 												</a>
 											</div>
-					
+
 											<div class="product-content">
 												<a href="#" class="title">
 													Power Hammer Drills 200V Machine Screwdriver
 												</a>
-					
 
-					
+
+
 												<ul class="products-price">
-													
+
 													<li>
 														<span>In Stock</span>
 													</li>
 												</ul>
-					
+
 												<ul class="products-cart-wish-view">
 													<li>
 														<a href="#" class="default-btn">
@@ -3025,29 +2082,29 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 															Add To Cart
 														</a>
 													</li>
-													
-													
+
+
 												</ul>
 											</div>
 										</div>
-										
+
 										<div class="single-products new-arrivals">
 											<div class="product-img">
 												<a href="#">
-													<img src="assets/images/products/product-22.jpg" alt="Image">
+													<img src="assets/rawad/images/products/product-22.jpg" alt="Image">
 												</a>
-		
+
 												<span class="hot new">New</span>
 											</div>
-					
+
 											<div class="product-content">
 												<a href="#" class="title">
 													Multi-function Screw Driver Set For Home Use
 												</a>
 												<ul class="products-price">
-													
+
 												</ul>
-					
+
 												<ul class="products-cart-wish-view">
 													<li>
 														<a href="#" class="default-btn">
@@ -3055,29 +2112,29 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 															Add To Cart
 														</a>
 													</li>
-													
-													
+
+
 												</ul>
 											</div>
 										</div>
-										
+
 										<div class="single-products new-arrivals">
 											<div class="product-img">
 												<a href="#">
-													<img src="assets/images/products/product-23.jpg" alt="Image">
+													<img src="assets/rawad/images/products/product-23.jpg" alt="Image">
 												</a>
 											</div>
-					
+
 											<div class="product-content">
 												<a href="#" class="title">
 													Wall Polishing Square Sander Electric Machine
 												</a>
 
-					
+
 												<ul class="products-price">
-													
+
 												</ul>
-					
+
 												<ul class="products-cart-wish-view">
 													<li>
 														<a href="#" class="default-btn">
@@ -3085,34 +2142,34 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 															Add To Cart
 														</a>
 													</li>
-													
-													
+
+
 												</ul>
 											</div>
 										</div>
-										
+
 										<div class="single-products new-arrivals">
 											<div class="product-img">
 												<a href="#">
-													<img src="assets/images/products/product-24.jpg" alt="Image">
+													<img src="assets/rawad/images/products/product-24.jpg" alt="Image">
 												</a>
-		
+
 												<span class="hot new">New</span>
 											</div>
-					
+
 											<div class="product-content">
 												<a href="#" class="title">
 													High Quality Carbon Steel Professional Power Tools
 												</a>
 
-					
+
 												<ul class="products-price">
-													
+
 													<li>
 														<span>In Stock</span>
 													</li>
 												</ul>
-					
+
 												<ul class="products-cart-wish-view">
 													<li>
 														<a href="#" class="default-btn">
@@ -3120,8 +2177,8 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 															Add To Cart
 														</a>
 													</li>
-													
-													
+
+
 												</ul>
 											</div>
 										</div>
@@ -3133,22 +2190,22 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 										<div class="single-products new-arrivals">
 											<div class="product-img">
 												<a href="#">
-													<img src="assets/images/products/product-17.jpg" alt="Image">
-												</a>
-		
-												<span class="hot new">New</span>
-											</div>
-					
-											<div class="product-content">
-												<a href="#" class="title">
-													Electrical Magnetic Impact Power Hammer Drills 
+													<img src="assets/rawad/images/products/product-17.jpg" alt="Image">
 												</a>
 
-					
+												<span class="hot new">New</span>
+											</div>
+
+											<div class="product-content">
+												<a href="#" class="title">
+													Electrical Magnetic Impact Power Hammer Drills
+												</a>
+
+
 												<ul class="products-price">
-													
+
 												</ul>
-					
+
 												<ul class="products-cart-wish-view">
 													<li>
 														<a href="#" class="default-btn">
@@ -3156,33 +2213,33 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 															Add To Cart
 														</a>
 													</li>
-													
-													
+
+
 												</ul>
 											</div>
 										</div>
-										
+
 										<div class="single-products new-arrivals">
 											<div class="product-img">
 												<a href="#">
-													<img src="assets/images/products/product-18.jpg" alt="Image">
+													<img src="assets/rawad/images/products/product-18.jpg" alt="Image">
 												</a>
 											</div>
-					
+
 											<div class="product-content">
 												<a href="#" class="title">
-													High Quality Electric Hand Planer, 4-3/8-Inch 
+													High Quality Electric Hand Planer, 4-3/8-Inch
 												</a>
-					
 
-					
+
+
 												<ul class="products-price">
-													
+
 													<li>
 														<span>In Stock</span>
 													</li>
 												</ul>
-					
+
 												<ul class="products-cart-wish-view">
 													<li>
 														<a href="#" class="default-btn">
@@ -3190,31 +2247,31 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 															Add To Cart
 														</a>
 													</li>
-													
-													
+
+
 												</ul>
 											</div>
 										</div>
-										
+
 										<div class="single-products new-arrivals">
 											<div class="product-img">
 												<a href="#">
-													<img src="assets/images/products/product-19.jpg" alt="Image">
+													<img src="assets/rawad/images/products/product-19.jpg" alt="Image">
 												</a>
-		
+
 												<span class="hot new">New</span>
 											</div>
-					
+
 											<div class="product-content">
 												<a href="#" class="title">
 													White Whale Vacuum Cleaner High Quality
 												</a>
 
-					
+
 												<ul class="products-price">
-													
+
 												</ul>
-					
+
 												<ul class="products-cart-wish-view">
 													<li>
 														<a href="#" class="default-btn">
@@ -3222,33 +2279,33 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 															Add To Cart
 														</a>
 													</li>
-													
-													
+
+
 												</ul>
 											</div>
 										</div>
-										
+
 										<div class="single-products new-arrivals">
 											<div class="product-img">
 												<a href="#">
-													<img src="assets/images/products/product-20.jpg" alt="Image">
+													<img src="assets/rawad/images/products/product-20.jpg" alt="Image">
 												</a>
 											</div>
-					
+
 											<div class="product-content">
 												<a href="#" class="title">
 													High Quality Carbon Steel Mini Drilling Machines
 												</a>
-					
 
-					
+
+
 												<ul class="products-price">
-													
+
 													<li>
 														<span>In Stock</span>
 													</li>
 												</ul>
-					
+
 												<ul class="products-cart-wish-view">
 													<li>
 														<a href="#" class="default-btn">
@@ -3256,33 +2313,33 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 															Add To Cart
 														</a>
 													</li>
-													
-													
+
+
 												</ul>
 											</div>
 										</div>
-									
+
 										<div class="single-products new-arrivals">
 											<div class="product-img">
 												<a href="#">
-													<img src="assets/images/products/product-21.jpg" alt="Image">
+													<img src="assets/rawad/images/products/product-21.jpg" alt="Image">
 												</a>
 											</div>
-					
+
 											<div class="product-content">
 												<a href="#" class="title">
 													Power Hammer Drills 200V Machine Screwdriver
 												</a>
-					
 
-					
+
+
 												<ul class="products-price">
-													
+
 													<li>
 														<span>In Stock</span>
 													</li>
 												</ul>
-					
+
 												<ul class="products-cart-wish-view">
 													<li>
 														<a href="#" class="default-btn">
@@ -3290,30 +2347,29 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 															Add To Cart
 														</a>
 													</li>
-													
-													
+
+
 												</ul>
 											</div>
 										</div>
-										
+
 										<div class="single-products new-arrivals">
 											<div class="product-img">
 												<a href="#">
-													<img src="assets/images/products/product-22.jpg" alt="Image">
+													<img src="assets/rawad/images/products/product-22.jpg" alt="Image">
 												</a>
-		
+
 												<span class="hot new">New</span>
 											</div>
-					
+
 											<div class="product-content">
 												<a href="#" class="title">
 													Multi-function Screw Driver Set For Home Use
 												</a>
-					
 												<ul class="products-price">
-													
+
 												</ul>
-					
+
 												<ul class="products-cart-wish-view">
 													<li>
 														<a href="#" class="default-btn">
@@ -3321,29 +2377,29 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 															Add To Cart
 														</a>
 													</li>
-													
-													
+
+
 												</ul>
 											</div>
 										</div>
-										
+
 										<div class="single-products new-arrivals">
 											<div class="product-img">
 												<a href="#">
-													<img src="assets/images/products/product-23.jpg" alt="Image">
+													<img src="assets/rawad/images/products/product-23.jpg" alt="Image">
 												</a>
 											</div>
-					
+
 											<div class="product-content">
 												<a href="#" class="title">
 													Wall Polishing Square Sander Electric Machine
 												</a>
 
-					
+
 												<ul class="products-price">
-													
+
 												</ul>
-					
+
 												<ul class="products-cart-wish-view">
 													<li>
 														<a href="#" class="default-btn">
@@ -3351,34 +2407,34 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 															Add To Cart
 														</a>
 													</li>
-													
-													
+
+
 												</ul>
 											</div>
 										</div>
-										
+
 										<div class="single-products new-arrivals">
 											<div class="product-img">
 												<a href="#">
-													<img src="assets/images/products/product-24.jpg" alt="Image">
+													<img src="assets/rawad/images/products/product-24.jpg" alt="Image">
 												</a>
-		
+
 												<span class="hot new">New</span>
 											</div>
-					
+
 											<div class="product-content">
 												<a href="#" class="title">
 													High Quality Carbon Steel Professional Power Tools
 												</a>
 
-					
+
 												<ul class="products-price">
-													
+
 													<li>
 														<span>In Stock</span>
 													</li>
 												</ul>
-					
+
 												<ul class="products-cart-wish-view">
 													<li>
 														<a href="#" class="default-btn">
@@ -3386,8 +2442,8 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 															Add To Cart
 														</a>
 													</li>
-													
-													
+
+
 												</ul>
 											</div>
 										</div>
@@ -3399,22 +2455,22 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 										<div class="single-products new-arrivals">
 											<div class="product-img">
 												<a href="#">
-													<img src="assets/images/products/product-17.jpg" alt="Image">
-												</a>
-		
-												<span class="hot new">New</span>
-											</div>
-					
-											<div class="product-content">
-												<a href="#" class="title">
-													Electrical Magnetic Impact Power Hammer Drills 
+													<img src="assets/rawad/images/products/product-17.jpg" alt="Image">
 												</a>
 
-					
+												<span class="hot new">New</span>
+											</div>
+
+											<div class="product-content">
+												<a href="#" class="title">
+													Electrical Magnetic Impact Power Hammer Drills
+												</a>
+
+
 												<ul class="products-price">
-													
+
 												</ul>
-					
+
 												<ul class="products-cart-wish-view">
 													<li>
 														<a href="#" class="default-btn">
@@ -3422,33 +2478,33 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 															Add To Cart
 														</a>
 													</li>
-													
-													
+
+
 												</ul>
 											</div>
 										</div>
-										
+
 										<div class="single-products new-arrivals">
 											<div class="product-img">
 												<a href="#">
-													<img src="assets/images/products/product-18.jpg" alt="Image">
+													<img src="assets/rawad/images/products/product-18.jpg" alt="Image">
 												</a>
 											</div>
-					
+
 											<div class="product-content">
 												<a href="#" class="title">
-													High Quality Electric Hand Planer, 4-3/8-Inch 
+													High Quality Electric Hand Planer, 4-3/8-Inch
 												</a>
-					
 
-					
+
+
 												<ul class="products-price">
-													
+
 													<li>
 														<span>In Stock</span>
 													</li>
 												</ul>
-					
+
 												<ul class="products-cart-wish-view">
 													<li>
 														<a href="#" class="default-btn">
@@ -3456,31 +2512,31 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 															Add To Cart
 														</a>
 													</li>
-													
-													
+
+
 												</ul>
 											</div>
 										</div>
-										
+
 										<div class="single-products new-arrivals">
 											<div class="product-img">
 												<a href="#">
-													<img src="assets/images/products/product-19.jpg" alt="Image">
+													<img src="assets/rawad/images/products/product-19.jpg" alt="Image">
 												</a>
-		
+
 												<span class="hot new">New</span>
 											</div>
-					
+
 											<div class="product-content">
 												<a href="#" class="title">
 													White Whale Vacuum Cleaner High Quality
 												</a>
 
-					
+
 												<ul class="products-price">
-													
+
 												</ul>
-					
+
 												<ul class="products-cart-wish-view">
 													<li>
 														<a href="#" class="default-btn">
@@ -3488,33 +2544,33 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 															Add To Cart
 														</a>
 													</li>
-													
-													
+
+
 												</ul>
 											</div>
 										</div>
-										
+
 										<div class="single-products new-arrivals">
 											<div class="product-img">
 												<a href="#">
-													<img src="assets/images/products/product-20.jpg" alt="Image">
+													<img src="assets/rawad/images/products/product-20.jpg" alt="Image">
 												</a>
 											</div>
-					
+
 											<div class="product-content">
 												<a href="#" class="title">
 													High Quality Carbon Steel Mini Drilling Machines
 												</a>
-					
 
-					
+
+
 												<ul class="products-price">
-													
+
 													<li>
 														<span>In Stock</span>
 													</li>
 												</ul>
-					
+
 												<ul class="products-cart-wish-view">
 													<li>
 														<a href="#" class="default-btn">
@@ -3522,33 +2578,33 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 															Add To Cart
 														</a>
 													</li>
-													
-													
+
+
 												</ul>
 											</div>
 										</div>
-									
+
 										<div class="single-products new-arrivals">
 											<div class="product-img">
 												<a href="#">
-													<img src="assets/images/products/product-21.jpg" alt="Image">
+													<img src="assets/rawad/images/products/product-21.jpg" alt="Image">
 												</a>
 											</div>
-					
+
 											<div class="product-content">
 												<a href="#" class="title">
 													Power Hammer Drills 200V Machine Screwdriver
 												</a>
-					
 
-					
+
+
 												<ul class="products-price">
-													
+
 													<li>
 														<span>In Stock</span>
 													</li>
 												</ul>
-					
+
 												<ul class="products-cart-wish-view">
 													<li>
 														<a href="#" class="default-btn">
@@ -3556,30 +2612,29 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 															Add To Cart
 														</a>
 													</li>
-													
-													
+
+
 												</ul>
 											</div>
 										</div>
-										
+
 										<div class="single-products new-arrivals">
 											<div class="product-img">
 												<a href="#">
-													<img src="assets/images/products/product-22.jpg" alt="Image">
+													<img src="assets/rawad/images/products/product-22.jpg" alt="Image">
 												</a>
-		
+
 												<span class="hot new">New</span>
 											</div>
-					
+
 											<div class="product-content">
 												<a href="#" class="title">
 													Multi-function Screw Driver Set For Home Use
 												</a>
-					
 												<ul class="products-price">
-													
+
 												</ul>
-					
+
 												<ul class="products-cart-wish-view">
 													<li>
 														<a href="#" class="default-btn">
@@ -3587,29 +2642,29 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 															Add To Cart
 														</a>
 													</li>
-													
-													
+
+
 												</ul>
 											</div>
 										</div>
-										
+
 										<div class="single-products new-arrivals">
 											<div class="product-img">
 												<a href="#">
-													<img src="assets/images/products/product-23.jpg" alt="Image">
+													<img src="assets/rawad/images/products/product-23.jpg" alt="Image">
 												</a>
 											</div>
-					
+
 											<div class="product-content">
 												<a href="#" class="title">
 													Wall Polishing Square Sander Electric Machine
 												</a>
 
-					
+
 												<ul class="products-price">
-													
+
 												</ul>
-					
+
 												<ul class="products-cart-wish-view">
 													<li>
 														<a href="#" class="default-btn">
@@ -3617,34 +2672,34 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 															Add To Cart
 														</a>
 													</li>
-													
-													
+
+
 												</ul>
 											</div>
 										</div>
-										
+
 										<div class="single-products new-arrivals">
 											<div class="product-img">
 												<a href="#">
-													<img src="assets/images/products/product-24.jpg" alt="Image">
+													<img src="assets/rawad/images/products/product-24.jpg" alt="Image">
 												</a>
-		
+
 												<span class="hot new">New</span>
 											</div>
-					
+
 											<div class="product-content">
 												<a href="#" class="title">
 													High Quality Carbon Steel Professional Power Tools
 												</a>
 
-					
+
 												<ul class="products-price">
-													
+
 													<li>
 														<span>In Stock</span>
 													</li>
 												</ul>
-					
+
 												<ul class="products-cart-wish-view">
 													<li>
 														<a href="#" class="default-btn">
@@ -3652,8 +2707,805 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 															Add To Cart
 														</a>
 													</li>
-													
-													
+
+
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="tabs_item">
+									<div class="categories-slider owl-carousel owl-theme">
+										<div class="single-products new-arrivals">
+											<div class="product-img">
+												<a href="#">
+													<img src="assets/rawad/images/products/product-17.jpg" alt="Image">
+												</a>
+
+												<span class="hot new">New</span>
+											</div>
+
+											<div class="product-content">
+												<a href="#" class="title">
+													Electrical Magnetic Impact Power Hammer Drills
+												</a>
+
+
+												<ul class="products-price">
+
+												</ul>
+
+												<ul class="products-cart-wish-view">
+													<li>
+														<a href="#" class="default-btn">
+															<i class="ri-shopping-cart-line"></i>
+															Add To Cart
+														</a>
+													</li>
+
+
+												</ul>
+											</div>
+										</div>
+
+										<div class="single-products new-arrivals">
+											<div class="product-img">
+												<a href="#">
+													<img src="assets/rawad/images/products/product-18.jpg" alt="Image">
+												</a>
+											</div>
+
+											<div class="product-content">
+												<a href="#" class="title">
+													High Quality Electric Hand Planer, 4-3/8-Inch
+												</a>
+
+
+
+												<ul class="products-price">
+
+													<li>
+														<span>In Stock</span>
+													</li>
+												</ul>
+
+												<ul class="products-cart-wish-view">
+													<li>
+														<a href="#" class="default-btn">
+															<i class="ri-shopping-cart-line"></i>
+															Add To Cart
+														</a>
+													</li>
+
+
+												</ul>
+											</div>
+										</div>
+
+										<div class="single-products new-arrivals">
+											<div class="product-img">
+												<a href="#">
+													<img src="assets/rawad/images/products/product-19.jpg" alt="Image">
+												</a>
+
+												<span class="hot new">New</span>
+											</div>
+
+											<div class="product-content">
+												<a href="#" class="title">
+													White Whale Vacuum Cleaner High Quality
+												</a>
+
+
+												<ul class="products-price">
+
+												</ul>
+
+												<ul class="products-cart-wish-view">
+													<li>
+														<a href="#" class="default-btn">
+															<i class="ri-shopping-cart-line"></i>
+															Add To Cart
+														</a>
+													</li>
+
+
+												</ul>
+											</div>
+										</div>
+
+										<div class="single-products new-arrivals">
+											<div class="product-img">
+												<a href="#">
+													<img src="assets/rawad/images/products/product-20.jpg" alt="Image">
+												</a>
+											</div>
+
+											<div class="product-content">
+												<a href="#" class="title">
+													High Quality Carbon Steel Mini Drilling Machines
+												</a>
+
+
+
+												<ul class="products-price">
+
+													<li>
+														<span>In Stock</span>
+													</li>
+												</ul>
+
+												<ul class="products-cart-wish-view">
+													<li>
+														<a href="#" class="default-btn">
+															<i class="ri-shopping-cart-line"></i>
+															Add To Cart
+														</a>
+													</li>
+
+
+												</ul>
+											</div>
+										</div>
+
+										<div class="single-products new-arrivals">
+											<div class="product-img">
+												<a href="#">
+													<img src="assets/rawad/images/products/product-21.jpg" alt="Image">
+												</a>
+											</div>
+
+											<div class="product-content">
+												<a href="#" class="title">
+													Power Hammer Drills 200V Machine Screwdriver
+												</a>
+
+
+
+												<ul class="products-price">
+
+													<li>
+														<span>In Stock</span>
+													</li>
+												</ul>
+
+												<ul class="products-cart-wish-view">
+													<li>
+														<a href="#" class="default-btn">
+															<i class="ri-shopping-cart-line"></i>
+															Add To Cart
+														</a>
+													</li>
+
+
+												</ul>
+											</div>
+										</div>
+
+										<div class="single-products new-arrivals">
+											<div class="product-img">
+												<a href="#">
+													<img src="assets/rawad/images/products/product-22.jpg" alt="Image">
+												</a>
+
+												<span class="hot new">New</span>
+											</div>
+
+											<div class="product-content">
+												<a href="#" class="title">
+													Multi-function Screw Driver Set For Home Use
+												</a>
+												<ul class="products-price">
+
+												</ul>
+
+												<ul class="products-cart-wish-view">
+													<li>
+														<a href="#" class="default-btn">
+															<i class="ri-shopping-cart-line"></i>
+															Add To Cart
+														</a>
+													</li>
+
+
+												</ul>
+											</div>
+										</div>
+
+										<div class="single-products new-arrivals">
+											<div class="product-img">
+												<a href="#">
+													<img src="assets/rawad/images/products/product-23.jpg" alt="Image">
+												</a>
+											</div>
+
+											<div class="product-content">
+												<a href="#" class="title">
+													Wall Polishing Square Sander Electric Machine
+												</a>
+
+
+												<ul class="products-price">
+
+												</ul>
+
+												<ul class="products-cart-wish-view">
+													<li>
+														<a href="#" class="default-btn">
+															<i class="ri-shopping-cart-line"></i>
+															Add To Cart
+														</a>
+													</li>
+
+
+												</ul>
+											</div>
+										</div>
+
+										<div class="single-products new-arrivals">
+											<div class="product-img">
+												<a href="#">
+													<img src="assets/rawad/images/products/product-24.jpg" alt="Image">
+												</a>
+
+												<span class="hot new">New</span>
+											</div>
+
+											<div class="product-content">
+												<a href="#" class="title">
+													High Quality Carbon Steel Professional Power Tools
+												</a>
+
+
+												<ul class="products-price">
+
+													<li>
+														<span>In Stock</span>
+													</li>
+												</ul>
+
+												<ul class="products-cart-wish-view">
+													<li>
+														<a href="#" class="default-btn">
+															<i class="ri-shopping-cart-line"></i>
+															Add To Cart
+														</a>
+													</li>
+
+
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="tabs_item">
+									<div class="categories-slider owl-carousel owl-theme">
+										<div class="single-products new-arrivals">
+											<div class="product-img">
+												<a href="#">
+													<img src="assets/rawad/images/products/product-17.jpg" alt="Image">
+												</a>
+
+												<span class="hot new">New</span>
+											</div>
+
+											<div class="product-content">
+												<a href="#" class="title">
+													Electrical Magnetic Impact Power Hammer Drills
+												</a>
+
+
+												<ul class="products-price">
+
+												</ul>
+
+												<ul class="products-cart-wish-view">
+													<li>
+														<a href="#" class="default-btn">
+															<i class="ri-shopping-cart-line"></i>
+															Add To Cart
+														</a>
+													</li>
+
+
+												</ul>
+											</div>
+										</div>
+
+										<div class="single-products new-arrivals">
+											<div class="product-img">
+												<a href="#">
+													<img src="assets/rawad/images/products/product-18.jpg" alt="Image">
+												</a>
+											</div>
+
+											<div class="product-content">
+												<a href="#" class="title">
+													High Quality Electric Hand Planer, 4-3/8-Inch
+												</a>
+
+
+
+												<ul class="products-price">
+
+													<li>
+														<span>In Stock</span>
+													</li>
+												</ul>
+
+												<ul class="products-cart-wish-view">
+													<li>
+														<a href="#" class="default-btn">
+															<i class="ri-shopping-cart-line"></i>
+															Add To Cart
+														</a>
+													</li>
+
+
+												</ul>
+											</div>
+										</div>
+
+										<div class="single-products new-arrivals">
+											<div class="product-img">
+												<a href="#">
+													<img src="assets/rawad/images/products/product-19.jpg" alt="Image">
+												</a>
+
+												<span class="hot new">New</span>
+											</div>
+
+											<div class="product-content">
+												<a href="#" class="title">
+													White Whale Vacuum Cleaner High Quality
+												</a>
+
+
+												<ul class="products-price">
+
+												</ul>
+
+												<ul class="products-cart-wish-view">
+													<li>
+														<a href="#" class="default-btn">
+															<i class="ri-shopping-cart-line"></i>
+															Add To Cart
+														</a>
+													</li>
+
+
+												</ul>
+											</div>
+										</div>
+
+										<div class="single-products new-arrivals">
+											<div class="product-img">
+												<a href="#">
+													<img src="assets/rawad/images/products/product-20.jpg" alt="Image">
+												</a>
+											</div>
+
+											<div class="product-content">
+												<a href="#" class="title">
+													High Quality Carbon Steel Mini Drilling Machines
+												</a>
+
+
+
+												<ul class="products-price">
+
+													<li>
+														<span>In Stock</span>
+													</li>
+												</ul>
+
+												<ul class="products-cart-wish-view">
+													<li>
+														<a href="#" class="default-btn">
+															<i class="ri-shopping-cart-line"></i>
+															Add To Cart
+														</a>
+													</li>
+
+
+												</ul>
+											</div>
+										</div>
+
+										<div class="single-products new-arrivals">
+											<div class="product-img">
+												<a href="#">
+													<img src="assets/rawad/images/products/product-21.jpg" alt="Image">
+												</a>
+											</div>
+
+											<div class="product-content">
+												<a href="#" class="title">
+													Power Hammer Drills 200V Machine Screwdriver
+												</a>
+
+
+
+												<ul class="products-price">
+
+													<li>
+														<span>In Stock</span>
+													</li>
+												</ul>
+
+												<ul class="products-cart-wish-view">
+													<li>
+														<a href="#" class="default-btn">
+															<i class="ri-shopping-cart-line"></i>
+															Add To Cart
+														</a>
+													</li>
+
+
+												</ul>
+											</div>
+										</div>
+
+										<div class="single-products new-arrivals">
+											<div class="product-img">
+												<a href="#">
+													<img src="assets/rawad/images/products/product-22.jpg" alt="Image">
+												</a>
+
+												<span class="hot new">New</span>
+											</div>
+
+											<div class="product-content">
+												<a href="#" class="title">
+													Multi-function Screw Driver Set For Home Use
+												</a>
+
+												<ul class="products-price">
+
+												</ul>
+
+												<ul class="products-cart-wish-view">
+													<li>
+														<a href="#" class="default-btn">
+															<i class="ri-shopping-cart-line"></i>
+															Add To Cart
+														</a>
+													</li>
+
+
+												</ul>
+											</div>
+										</div>
+
+										<div class="single-products new-arrivals">
+											<div class="product-img">
+												<a href="#">
+													<img src="assets/rawad/images/products/product-23.jpg" alt="Image">
+												</a>
+											</div>
+
+											<div class="product-content">
+												<a href="#" class="title">
+													Wall Polishing Square Sander Electric Machine
+												</a>
+
+
+												<ul class="products-price">
+
+												</ul>
+
+												<ul class="products-cart-wish-view">
+													<li>
+														<a href="#" class="default-btn">
+															<i class="ri-shopping-cart-line"></i>
+															Add To Cart
+														</a>
+													</li>
+
+
+												</ul>
+											</div>
+										</div>
+
+										<div class="single-products new-arrivals">
+											<div class="product-img">
+												<a href="#">
+													<img src="assets/rawad/images/products/product-24.jpg" alt="Image">
+												</a>
+
+												<span class="hot new">New</span>
+											</div>
+
+											<div class="product-content">
+												<a href="#" class="title">
+													High Quality Carbon Steel Professional Power Tools
+												</a>
+
+
+												<ul class="products-price">
+
+													<li>
+														<span>In Stock</span>
+													</li>
+												</ul>
+
+												<ul class="products-cart-wish-view">
+													<li>
+														<a href="#" class="default-btn">
+															<i class="ri-shopping-cart-line"></i>
+															Add To Cart
+														</a>
+													</li>
+
+
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="tabs_item">
+									<div class="categories-slider owl-carousel owl-theme">
+										<div class="single-products new-arrivals">
+											<div class="product-img">
+												<a href="#">
+													<img src="assets/rawad/images/products/product-17.jpg" alt="Image">
+												</a>
+
+												<span class="hot new">New</span>
+											</div>
+
+											<div class="product-content">
+												<a href="#" class="title">
+													Electrical Magnetic Impact Power Hammer Drills
+												</a>
+
+
+												<ul class="products-price">
+
+												</ul>
+
+												<ul class="products-cart-wish-view">
+													<li>
+														<a href="#" class="default-btn">
+															<i class="ri-shopping-cart-line"></i>
+															Add To Cart
+														</a>
+													</li>
+
+
+												</ul>
+											</div>
+										</div>
+
+										<div class="single-products new-arrivals">
+											<div class="product-img">
+												<a href="#">
+													<img src="assets/rawad/images/products/product-18.jpg" alt="Image">
+												</a>
+											</div>
+
+											<div class="product-content">
+												<a href="#" class="title">
+													High Quality Electric Hand Planer, 4-3/8-Inch
+												</a>
+
+
+
+												<ul class="products-price">
+
+													<li>
+														<span>In Stock</span>
+													</li>
+												</ul>
+
+												<ul class="products-cart-wish-view">
+													<li>
+														<a href="#" class="default-btn">
+															<i class="ri-shopping-cart-line"></i>
+															Add To Cart
+														</a>
+													</li>
+
+
+												</ul>
+											</div>
+										</div>
+
+										<div class="single-products new-arrivals">
+											<div class="product-img">
+												<a href="#">
+													<img src="assets/rawad/images/products/product-19.jpg" alt="Image">
+												</a>
+
+												<span class="hot new">New</span>
+											</div>
+
+											<div class="product-content">
+												<a href="#" class="title">
+													White Whale Vacuum Cleaner High Quality
+												</a>
+
+
+												<ul class="products-price">
+
+												</ul>
+
+												<ul class="products-cart-wish-view">
+													<li>
+														<a href="#" class="default-btn">
+															<i class="ri-shopping-cart-line"></i>
+															Add To Cart
+														</a>
+													</li>
+
+
+												</ul>
+											</div>
+										</div>
+
+										<div class="single-products new-arrivals">
+											<div class="product-img">
+												<a href="#">
+													<img src="assets/rawad/images/products/product-20.jpg" alt="Image">
+												</a>
+											</div>
+
+											<div class="product-content">
+												<a href="#" class="title">
+													High Quality Carbon Steel Mini Drilling Machines
+												</a>
+
+
+
+												<ul class="products-price">
+
+													<li>
+														<span>In Stock</span>
+													</li>
+												</ul>
+
+												<ul class="products-cart-wish-view">
+													<li>
+														<a href="#" class="default-btn">
+															<i class="ri-shopping-cart-line"></i>
+															Add To Cart
+														</a>
+													</li>
+
+
+												</ul>
+											</div>
+										</div>
+
+										<div class="single-products new-arrivals">
+											<div class="product-img">
+												<a href="#">
+													<img src="assets/rawad/images/products/product-21.jpg" alt="Image">
+												</a>
+											</div>
+
+											<div class="product-content">
+												<a href="#" class="title">
+													Power Hammer Drills 200V Machine Screwdriver
+												</a>
+
+
+
+												<ul class="products-price">
+
+													<li>
+														<span>In Stock</span>
+													</li>
+												</ul>
+
+												<ul class="products-cart-wish-view">
+													<li>
+														<a href="#" class="default-btn">
+															<i class="ri-shopping-cart-line"></i>
+															Add To Cart
+														</a>
+													</li>
+
+
+												</ul>
+											</div>
+										</div>
+
+										<div class="single-products new-arrivals">
+											<div class="product-img">
+												<a href="#">
+													<img src="assets/rawad/images/products/product-22.jpg" alt="Image">
+												</a>
+
+												<span class="hot new">New</span>
+											</div>
+
+											<div class="product-content">
+												<a href="#" class="title">
+													Multi-function Screw Driver Set For Home Use
+												</a>
+
+												<ul class="products-price">
+
+												</ul>
+
+												<ul class="products-cart-wish-view">
+													<li>
+														<a href="#" class="default-btn">
+															<i class="ri-shopping-cart-line"></i>
+															Add To Cart
+														</a>
+													</li>
+
+
+												</ul>
+											</div>
+										</div>
+
+										<div class="single-products new-arrivals">
+											<div class="product-img">
+												<a href="#">
+													<img src="assets/rawad/images/products/product-23.jpg" alt="Image">
+												</a>
+											</div>
+
+											<div class="product-content">
+												<a href="#" class="title">
+													Wall Polishing Square Sander Electric Machine
+												</a>
+
+
+												<ul class="products-price">
+
+												</ul>
+
+												<ul class="products-cart-wish-view">
+													<li>
+														<a href="#" class="default-btn">
+															<i class="ri-shopping-cart-line"></i>
+															Add To Cart
+														</a>
+													</li>
+
+
+												</ul>
+											</div>
+										</div>
+
+										<div class="single-products new-arrivals">
+											<div class="product-img">
+												<a href="#">
+													<img src="assets/rawad/images/products/product-24.jpg" alt="Image">
+												</a>
+
+												<span class="hot new">New</span>
+											</div>
+
+											<div class="product-content">
+												<a href="#" class="title">
+													High Quality Carbon Steel Professional Power Tools
+												</a>
+
+
+												<ul class="products-price">
+
+													<li>
+														<span>In Stock</span>
+													</li>
+												</ul>
+
+												<ul class="products-cart-wish-view">
+													<li>
+														<a href="#" class="default-btn">
+															<i class="ri-shopping-cart-line"></i>
+															Add To Cart
+														</a>
+													</li>
+
+
 												</ul>
 											</div>
 										</div>
@@ -3664,22 +3516,22 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 										<div class="single-products new-arrivals">
 											<div class="product-img">
 												<a href="#">
-													<img src="assets/images/products/product-17.jpg" alt="Image">
-												</a>
-		
-												<span class="hot new">New</span>
-											</div>
-					
-											<div class="product-content">
-												<a href="#" class="title">
-													Electrical Magnetic Impact Power Hammer Drills 
+													<img src="assets/rawad/images/products/product-17.jpg" alt="Image">
 												</a>
 
-					
+												<span class="hot new">New</span>
+											</div>
+
+											<div class="product-content">
+												<a href="#" class="title">
+													Electrical Magnetic Impact Power Hammer Drills
+												</a>
+
+
 												<ul class="products-price">
-													
+
 												</ul>
-					
+
 												<ul class="products-cart-wish-view">
 													<li>
 														<a href="#" class="default-btn">
@@ -3687,33 +3539,33 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 															Add To Cart
 														</a>
 													</li>
-													
-													
+
+
 												</ul>
 											</div>
 										</div>
-										
+
 										<div class="single-products new-arrivals">
 											<div class="product-img">
 												<a href="#">
-													<img src="assets/images/products/product-18.jpg" alt="Image">
+													<img src="assets/rawad/images/products/product-18.jpg" alt="Image">
 												</a>
 											</div>
-					
+
 											<div class="product-content">
 												<a href="#" class="title">
-													High Quality Electric Hand Planer, 4-3/8-Inch 
+													High Quality Electric Hand Planer, 4-3/8-Inch
 												</a>
-					
 
-					
+
+
 												<ul class="products-price">
-													
+
 													<li>
 														<span>In Stock</span>
 													</li>
 												</ul>
-					
+
 												<ul class="products-cart-wish-view">
 													<li>
 														<a href="#" class="default-btn">
@@ -3721,31 +3573,31 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 															Add To Cart
 														</a>
 													</li>
-													
-													
+
+
 												</ul>
 											</div>
 										</div>
-										
+
 										<div class="single-products new-arrivals">
 											<div class="product-img">
 												<a href="#">
-													<img src="assets/images/products/product-19.jpg" alt="Image">
+													<img src="assets/rawad/images/products/product-19.jpg" alt="Image">
 												</a>
-		
+
 												<span class="hot new">New</span>
 											</div>
-					
+
 											<div class="product-content">
 												<a href="#" class="title">
 													White Whale Vacuum Cleaner High Quality
 												</a>
 
-					
+
 												<ul class="products-price">
-													
+
 												</ul>
-					
+
 												<ul class="products-cart-wish-view">
 													<li>
 														<a href="#" class="default-btn">
@@ -3753,33 +3605,33 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 															Add To Cart
 														</a>
 													</li>
-													
-													
+
+
 												</ul>
 											</div>
 										</div>
-										
+
 										<div class="single-products new-arrivals">
 											<div class="product-img">
 												<a href="#">
-													<img src="assets/images/products/product-20.jpg" alt="Image">
+													<img src="assets/rawad/images/products/product-20.jpg" alt="Image">
 												</a>
 											</div>
-					
+
 											<div class="product-content">
 												<a href="#" class="title">
 													High Quality Carbon Steel Mini Drilling Machines
 												</a>
-					
 
-					
+
+
 												<ul class="products-price">
-													
+
 													<li>
 														<span>In Stock</span>
 													</li>
 												</ul>
-					
+
 												<ul class="products-cart-wish-view">
 													<li>
 														<a href="#" class="default-btn">
@@ -3787,33 +3639,33 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 															Add To Cart
 														</a>
 													</li>
-													
-													
+
+
 												</ul>
 											</div>
 										</div>
-									
+
 										<div class="single-products new-arrivals">
 											<div class="product-img">
 												<a href="#">
-													<img src="assets/images/products/product-21.jpg" alt="Image">
+													<img src="assets/rawad/images/products/product-21.jpg" alt="Image">
 												</a>
 											</div>
-					
+
 											<div class="product-content">
 												<a href="#" class="title">
 													Power Hammer Drills 200V Machine Screwdriver
 												</a>
-					
 
-					
+
+
 												<ul class="products-price">
-													
+
 													<li>
 														<span>In Stock</span>
 													</li>
 												</ul>
-					
+
 												<ul class="products-cart-wish-view">
 													<li>
 														<a href="#" class="default-btn">
@@ -3821,30 +3673,30 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 															Add To Cart
 														</a>
 													</li>
-													
-													
+
+
 												</ul>
 											</div>
 										</div>
-										
+
 										<div class="single-products new-arrivals">
 											<div class="product-img">
 												<a href="#">
-													<img src="assets/images/products/product-22.jpg" alt="Image">
+													<img src="assets/rawad/images/products/product-22.jpg" alt="Image">
 												</a>
-		
+
 												<span class="hot new">New</span>
 											</div>
-					
+
 											<div class="product-content">
 												<a href="#" class="title">
 													Multi-function Screw Driver Set For Home Use
 												</a>
-					
+
 												<ul class="products-price">
-													
+
 												</ul>
-					
+
 												<ul class="products-cart-wish-view">
 													<li>
 														<a href="#" class="default-btn">
@@ -3852,29 +3704,29 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 															Add To Cart
 														</a>
 													</li>
-													
-													
+
+
 												</ul>
 											</div>
 										</div>
-										
+
 										<div class="single-products new-arrivals">
 											<div class="product-img">
 												<a href="#">
-													<img src="assets/images/products/product-23.jpg" alt="Image">
+													<img src="assets/rawad/images/products/product-23.jpg" alt="Image">
 												</a>
 											</div>
-					
+
 											<div class="product-content">
 												<a href="#" class="title">
 													Wall Polishing Square Sander Electric Machine
 												</a>
 
-					
+
 												<ul class="products-price">
-													
+
 												</ul>
-					
+
 												<ul class="products-cart-wish-view">
 													<li>
 														<a href="#" class="default-btn">
@@ -3882,34 +3734,34 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 															Add To Cart
 														</a>
 													</li>
-													
-													
+
+
 												</ul>
 											</div>
 										</div>
-										
+
 										<div class="single-products new-arrivals">
 											<div class="product-img">
 												<a href="#">
-													<img src="assets/images/products/product-24.jpg" alt="Image">
+													<img src="assets/rawad/images/products/product-24.jpg" alt="Image">
 												</a>
-		
+
 												<span class="hot new">New</span>
 											</div>
-					
+
 											<div class="product-content">
 												<a href="#" class="title">
 													High Quality Carbon Steel Professional Power Tools
 												</a>
 
-					
+
 												<ul class="products-price">
-													
+
 													<li>
 														<span>In Stock</span>
 													</li>
 												</ul>
-					
+
 												<ul class="products-cart-wish-view">
 													<li>
 														<a href="#" class="default-btn">
@@ -3917,8 +3769,8 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 															Add To Cart
 														</a>
 													</li>
-													
-													
+
+
 												</ul>
 											</div>
 										</div>
@@ -3938,22 +3790,22 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 				<div class="partner-wrap">
 					<div class="partner-slider owl-carousel owl-theme">
 						<div class="partner-item">
-							<img src="assets/images/partners/partner-1.png" alt="Image">
+							<img src="assets/rawad/images/partners/partner-1.png" alt="Image">
 						</div>
 						<div class="partner-item">
-							<img src="assets/images/partners/partner-2.png" alt="Image">
+							<img src="assets/rawad/images/partners/partner-2.png" alt="Image">
 						</div>
 						<div class="partner-item">
-							<img src="assets/images/partners/partner-3.png" alt="Image">
+							<img src="assets/rawad/images/partners/partner-3.png" alt="Image">
 						</div>
 						<div class="partner-item">
-							<img src="assets/images/partners/partner-4.png" alt="Image">
+							<img src="assets/rawad/images/partners/partner-4.png" alt="Image">
 						</div>
 						<div class="partner-item">
-							<img src="assets/images/partners/partner-5.png" alt="Image">
+							<img src="assets/rawad/images/partners/partner-5.png" alt="Image">
 						</div>
 						<div class="partner-item">
-							<img src="assets/images/partners/partner-6.png" alt="Image">
+							<img src="assets/rawad/images/partners/partner-6.png" alt="Image">
 						</div>
 					</div>
 				</div>
@@ -3969,7 +3821,7 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 					<div class="col-lg-4 col-sm-6">
 						<div class="single-services bg-e6f7f6">
 							<div class="icon">
-								<img src="assets/images/icon/support.png" alt="Image">
+								<img src="assets/rawad/images/icon/support.png" alt="Image">
 							</div>
 							<h3>Customer Support</h3>
 							<p>24/7 We are customer care best support</p>
@@ -3979,7 +3831,7 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 					<div class="col-lg-4 col-sm-6">
 						<div class="single-services bg-fff5e7">
 							<div class="icon">
-								<img src="assets/images/icon/payment.png" alt="Image">
+								<img src="assets/rawad/images/icon/payment.png" alt="Image">
 							</div>
 							<h3>Secure Payments</h3>
 							<p>Pay with the world's top payment methods</p>
@@ -3989,9 +3841,9 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 					<div class="col-lg-4 col-sm-6">
 						<div class="single-services bg-eff5ff">
 							<div class="icon">
-								<img src="assets/images/icon/network.png" alt="Image">
+								<img src="assets/rawad/images/icon/network.png" alt="Image">
 							</div>
-							<h3>Saudi Arabia Delivery</h3>
+							<h3>Worldwide Delivery</h3>
 							<p>What you want, delivered to where you want</p>
 						</div>
 					</div>
@@ -4007,7 +3859,7 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 					<div class="col-lg-2">
 						<div class="logo">
 							<a href="index.html">
-							
+
 							</a>
 						</div>
 					</div>
@@ -4189,59 +4041,59 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 							<i class="ri-close-line"></i>
 						</span>
 					</button>
-					
+
                     <div class="row align-items-center">
                         <div class="col-lg-6">
                             <div class="product-view-one-image">
 								<div id="big" class="owl-carousel owl-theme">
 									<div class="item">
-										<img src="assets/images/products/product-1.jpg" alt="Image">
+										<img src="assets/rawad/images/products/product-1.jpg" alt="Image">
 									</div>
 
 									<div class="item">
-										<img src="assets/images/products/product-2.jpg" alt="Image">
+										<img src="assets/rawad/images/products/product-2.jpg" alt="Image">
 									</div>
 
 									<div class="item">
-										<img src="assets/images/products/product-3.jpg" alt="Image">
+										<img src="assets/rawad/images/products/product-3.jpg" alt="Image">
 									</div>
 
 									<div class="item">
-										<img src="assets/images/products/product-4.jpg" alt="Image">
+										<img src="assets/rawad/images/products/product-4.jpg" alt="Image">
 									</div>
 
 									<div class="item">
-										<img src="assets/images/products/product-5.jpg" alt="Image">
+										<img src="assets/rawad/images/products/product-5.jpg" alt="Image">
 									</div>
 
 									<div class="item">
-										<img src="assets/images/products/product-6.jpg" alt="Image">
+										<img src="assets/rawad/images/products/product-6.jpg" alt="Image">
 									</div>
 								</div>
 
 								<div id="thumbs" class="owl-carousel owl-theme">
 									<div class="item">
-										<img src="assets/images/products/product-1.jpg" alt="Image">
+										<img src="assets/rawad/images/products/product-1.jpg" alt="Image">
 									</div>
 
 									<div class="item">
-										<img src="assets/images/products/product-2.jpg" alt="Image">
+										<img src="assets/rawad/images/products/product-2.jpg" alt="Image">
 									</div>
 
 									<div class="item">
-										<img src="assets/images/products/product-3.jpg" alt="Image">
+										<img src="assets/rawad/images/products/product-3.jpg" alt="Image">
 									</div>
 
 									<div class="item">
-										<img src="assets/images/products/product-4.jpg" alt="Image">
+										<img src="assets/rawad/images/products/product-4.jpg" alt="Image">
 									</div>
 
 									<div class="item">
-										<img src="assets/images/products/product-5.jpg" alt="Image">
+										<img src="assets/rawad/images/products/product-5.jpg" alt="Image">
 									</div>
 
 									<div class="item">
-										<img src="assets/images/products/product-6.jpg" alt="Image">
+										<img src="assets/rawad/images/products/product-6.jpg" alt="Image">
 									</div>
 								</div>
                             </div>
@@ -4256,31 +4108,31 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 									<span class="new-price">₹119.0 <del>₹219.0</del></span>
 									<span class="in-stock">In Stock (8 Items)</span>
 								</div>
-								
+
                                 <ul class="product-info">
                                     <li>
 										<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At magnam ad reprehenderit fuga nam, non odit necessitatibus facilis beatae temporibus</p>
 									</li>
                                     <li>
-										<span>SKU:</span> 
+										<span>SKU:</span>
 										001
 									</li>
                                     <li>
-										<span>Availability:</span> 
+										<span>Availability:</span>
 										Available
 									</li>
                                     <li>
-										<span>Brand:</span> 
+										<span>Brand:</span>
 										Rawad Al  Sashat
 									</li>
                                     <li>
-										<span>Categories:</span> 
+										<span>Categories:</span>
 										<a href="#">Power Drill</a>
 									</li>
 								</ul>
 
 								<div class="product-color-switch">
-									
+
 								   	<ul>
 										<li>
 											<span>Color:</span>
@@ -4302,7 +4154,7 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 										</li>
 								   	</ul>
 								</div>
-								
+
                                 <div class="product-add-to-cart">
                                     <div class="input-counter">
 										<span class="minus-btn">
@@ -4315,7 +4167,7 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 											<i class="ri-add-line"></i>
 										</span>
 									</div>
-                                   
+
 									<a href="#" class="default-btn">
 										<i class="ri-shopping-cart-line"></i>
 										Add To Cart
@@ -4363,7 +4215,7 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
             </div>
         </div>
 		<!-- End Product View One Area -->
-		
+
 		<!-- Start Go Top Area -->
 		<div class="go-top">
 			<i class="ri-whatsapp-line"></i>
@@ -4374,16 +4226,16 @@ frappe.sys_defaults = frappe.boot.sysdefaults;
 		<!-- End Go Top Area -->
 
         <!-- Jquery Min JS -->
-        <script src="assets/js/jquery.min.js"></script> 
+        <script src="assets/rawad/js/jquery.min.js"></script>
         <!-- Bootstrap Bundle Min JS -->
-        <script src="assets/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/rawad/js/bootstrap.bundle.min.js"></script>
         <!-- Meanmenu Min JS -->
-		<script src="assets/js/meanmenu.min.js"></script>
+		<script src="assets/rawad/js/meanmenu.min.js"></script>
 		<!-- Owl Carousel Min JS -->
-		<script src="assets/js/owl.carousel.min.js"></script>
+		<script src="assets/rawad/js/owl.carousel.min.js"></script>
 		<!-- Wow Min JS -->
-        <script src="assets/js/wow.min.js"></script>
+        <script src="assets/rawad/js/wow.min.js"></script>
         <!-- Custom JS -->
-		<script src="assets/js/custom.js"></script>
+		<script src="assets/rawad/js/custom.js"></script>
     </body>
 </html>
